@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Calendário</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+    
+    :root {
+        --bg-body: #fdf7fa;
+        --bg-container: white;
+        --color-primary: #b76e79;
+        --color-secondary: #d88fa0;
+        --color-hover: #c5768b;
+        --bg-box: #fff5f7;
+        --text-main: #444;
+        --text-label: #7a4a52;
+        --border-color: #ddd;
+    }
+    
+    body.tema-azul {
+        --bg-body: #f0f4f8;
+        --color-primary: #4a7c9d;
+        --color-secondary: #7da6c2;
+        --color-hover: #6695b5;
+        --bg-box: #eaf1f6;
+        --text-label: #3b5a70;
+    }
+
+    body.tema-cinza {
+        --bg-body: #f4f4f4;
+        --color-primary: #6c757d;
+        --color-secondary: #adb5bd;
+        --color-hover: #868e96;
+        --bg-box: #e9ecef;
+        --text-label: #495057;
+    }
+
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg-body); margin: 0; padding: 20px 10px; display: flex; justify-content: center; color: var(--text-main); transition: 0.3s; }
+    
+    .container { background: var(--bg-container); width: 100%; max-width: 500px; margin: 0 auto; padding: 30px; border-radius: 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-top: 6px solid var(--color-primary); box-sizing: border-box; text-align: center; }
+    
+    h1 { color: var(--color-primary); margin-bottom: 5px; font-size: 1.6em; }
+    .subtitulo { font-size: 0.9em; color: #888; margin-bottom: 20px; }
+    .satisfy { font-family: 'Satisfy', cursive; font-size: 1.2em; color: var(--color-primary); }
+    
+    .botoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 15px; }
+    
+    .btn { padding: 15px; border: none; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: 0.3s; box-sizing: border-box; font-size: 0.95em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); width: 100%; }
+    .btn:hover { transform: translateY(-2px); }
+    
+    .normal { background: var(--color-secondary); }
+    .normal:hover { background: var(--color-hover); }
+
+    .sos { background-color: #d9534f; animation: pulse 2s infinite; }
+    .sos:hover { background-color: #c9302c; }
+    
+    .whats { background-color: #25d366; margin-top: 15px; }
+    .whats:hover { background-color: #20b858; }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.5); }
+        70% { box-shadow: 0 0 0 10px rgba(217, 83, 79, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
+    }
+    
+    .resultado { margin-top: 20px; background: var(--bg-box); padding: 15px; border-radius: 10px; text-align: left; border-left: 5px solid var(--color-secondary); display: none; box-sizing: border-box; font-size: 0.9em; line-height: 1.5; }
+    
+    .seletor-cor { background: #eee; padding: 10px; border-radius: 8px; display: inline-flex; gap: 10px; margin-bottom: 15px; align-items: center; justify-content: center; }
+    .btn-cor { width: 25px; height: 25px; border-radius: 50%; cursor: pointer; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+    .sair { position: fixed; top: 15px; right: 15px; background: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 8px; font-weight: bold; font-size: 0.85em; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 1000; transition: 0.3s; }
+    .sair:hover { background: #495057; }
+
+    .aviso { margin-top: 30px; font-size: 0.85em; color: #999; line-height: 1.5; }
+    .alerta-seguranca { margin-top: 15px; font-size: 0.8em; color: #d9534f; font-weight: bold; }
+
+/* BOTÃO DE SAÍDA RÁPIDA */
+    .sair { position: fixed; top: 10px; right: 10px; background: #6c757d; color: white; padding: 8px 12px; border: none; border-radius: 8px; font-size: 0.8em; font-weight: bold; z-index: 1000; cursor: pointer; }
+
+    .aviso { margin-top: 30px; font-size: 0.8em; color: #999; line-height: 1.5; }
+</style>
+
+<meta name="theme-color" content="#b76e79">
+</head>
+
+<body>
+
+<button class="sair" onclick="window.open('https://www.google.com','_self')">
+    Sair rápido
+</button>
+
+<div class="container">
+    <div class="seletor-cor">
+        <span style="font-size: 0.7em; color: #666; font-weight: bold;">Tema:</span>
+        <div class="btn-cor" style="background: #b76e79;" onclick="mudarTema('')"></div>
+        <div class="btn-cor" style="background: #4a7c9d;" onclick="mudarTema('tema-azul')"></div>
+        <div class="btn-cor" style="background: #6c757d;" onclick="mudarTema('tema-cinza')"></div>
+    </div>
+
+    <h1>🌸 Elas protegidas </h1>
+    <div class="subtitulo">Rede de apoio à mulher vítima de violência doméstica em Pernambuco</div>
+
+    <div class="botoes-grid">
+        <a href="tel:190" class="btn sos" id="sos">🚨 Polícia (190)</a>
+        <a href="tel:180" class="btn normal">📞 Central 180</a>
+        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Medida Protetiva</a>
+        <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
+        <button class="btn normal" onclick="toggle('varas')">🏛️ Varas (TJPE)</button>
+        <button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio e delegacias</button>
+        <button class="btn normal" onclick="toggle('violencia')">🛑 É violência?</button>
+        <button class="btn normal" onclick="toggle('fuga')">🧳 Plano de Fuga</button>
+    </div>
+
+    <a href="https://www.defensoria.pe.def.br/" class="btn normal" target="_blank" style="margin-top: 15px;">
+        🛡️ Defensoria Pública
+    </a>
+
+    <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20orienta%C3%A7%C3%A3o" class="btn whats" target="_blank">
+        💬 Orientações pelo WhatsApp (Central 180)
+    </a>
+
+    <div id="varas" class="resultado">
+        <strong style="color: var(--color-primary);">🏛️ Varas de Violência Doméstica</strong><br><br>
+        Entre em contato com a unidade judicial responsável pelo seu processo para dúvidas processuais ou andamento.<br><br>
+        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="color: var(--text-label); font-weight: bold;">🔗 Clique aqui para acessar a lista de telefones no site do TJPE.</a>
+    </div>
+
+    <div id="rede" class="resultado">
+        <strong style="color: var(--color-primary);">🤝 Rede de Enfrentamento</strong><br><br>
+        Você não está sozinha. Existem centros de referência e casas abrigo para acolher mulheres em situação de violência.<br><br>
+        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos/rede-de-protecao" target="_blank" style="color: var(--text-label); font-weight: bold;">🔗 Clique aqui para conhecer a rede de apoio à mulher.</a>
+    </div>
+
+    <div id="violencia" class="resultado">
+        <strong style="color: var(--color-primary);">🛑 A violência não é só física!</strong><br><br>
+        Também é crime: <br>
+• Violência psicológica: Xingar, humilhar, proibir de ver a família ou amigos; <br>
+• Violência patrimonial: Quebrar celular ou bens, rasgar roupas ou documentos, pegar seu dinheiro ou cartão; <br>
+• Violência sexual: Forçar relações íntimas; <br>
+• Violência moral: Espalhar mentiras sobre você; <br>
+• Violência vicária: Ameaçar ou agredir pessoas ou animais que você ama.
+    </div>
+
+    <div id="fuga" class="resultado">
+        <strong style="color: var(--color-primary);">🧳 Plano de Emergência</strong><br><br>
+        Se as coisas piorarem e você precisar sair rápido de casa, deixe separado em um local fácil ou na casa de alguém de confiança: seus documentos e os das crianças, cartões do banco, dinheiro, chaves de casa/carro, remédios de uso contínuo, uma troca de roupa e qualquer outra coisa que você ache importante.
+    </div>
+
+    <div class="alerta-seguranca">
+        ⚠️ Dica de segurança: Lembre-se de apagar o histórico do seu navegador após usar este site, para que ninguém saiba o que você acessou. Se você baixar o aplicativo ele ficará salvo no seu celular com o nome de Calendário Menstrual.
+    </div>
+
+    <div class="aviso">
+        🌸 <span class="satisfy">Desenvolvido por Belizza Araújo - Oficiala de Justiça do TJPE</span>
+    </div>
+
+</div>
+
+<script>
+
+// Limpar histórico visual ao sair
+window.addEventListener("beforeunload", () => {
+    document.body.innerHTML = "";
+});
+    function mudarTema(cl) {
+        document.body.className = cl;
+        const meta = document.querySelector("meta[name=theme-color]");
+        if(cl === 'tema-azul') meta.setAttribute("content", "#4a7c9d");
+        else if(cl === 'tema-cinza') meta.setAttribute("content", "#6c757d");
+        else meta.setAttribute("content", "#b76e79");
+    }
+
+    function toggle(id){
+        const secoes = ['varas', 'rede', 'violencia', 'fuga'];
+        secoes.forEach(secao => {
+            if (secao !== id) {
+                document.getElementById(secao).style.display = "none";
+            }
+        });
+        
+        const el = document.getElementById(id);
+        el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+
+    document.getElementById("sos").addEventListener("click", () => {
+        if(navigator.vibrate){
+            navigator.vibrate([200,100,200]);
+        }
+    });
+
+    if('serviceWorker' in navigator){
+        navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+    }
+</script>
+
+</body>
+</html>

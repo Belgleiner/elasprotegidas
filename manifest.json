@@ -1,0 +1,23 @@
+{
+  "short_name": "Calendário Menstrual",
+  "name": "Calendário Menstrual",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#fdf7fa",
+  "theme_color": "#b76e79",
+  "display": "standalone",
+  "orientation": "portrait"
+}

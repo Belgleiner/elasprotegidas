@@ -6,7 +6,6 @@ const assets = [
   './icone.png'
 ];
 
-// Instala o Service Worker e guarda os arquivos no celular
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(cacheName).then((cache) => {
@@ -15,7 +14,6 @@ self.addEventListener('install', (e) => {
   );
 });
 
-// Permite que o app abra mesmo sem internet (Offline)
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((response) => {

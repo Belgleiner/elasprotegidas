@@ -36,6 +36,15 @@
     .normal { background: var(--color-secondary); }
     .sos { background-color: #d9534f; grid-column: span 2; padding: 20px; font-size: 1.1em; animation: pulse 2s infinite; }
     .whats { background-color: var(--color-secondary); } /* Removido o grid-column: span 2 */
+
+.btn.full-width {
+    grid-column: span 2;
+    padding: 18px !important;
+    font-size: 1em !important;
+    background-color: var(--color-primary); /* Cor principal, mais séria que o rosa claro */
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
     
     @keyframes pulse {
         0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.5); }
@@ -83,11 +92,12 @@
     <div class="botoes-grid">
         <a href="tel:190" class="btn sos" target="_blank">🚨 POLÍCIA (190)</a>
         
+          <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank">⚖️ Peça sua Medida Protetiva</a>
+        <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal full-width" target="_blank">📝 Fazer B.O.</a>
+        
         <a href="tel:180" class="btn normal" target="_blank">📞 Central 180</a>
         <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">💬 WhatsApp (180)</a>
 
-        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Peça sua Medida Protetiva</a>
-        <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
         
        <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</a>
     <button class="btn normal" onclick="toggle('varas')">🏛️ Varas (TJPE)</button>

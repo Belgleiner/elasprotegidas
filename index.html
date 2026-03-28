@@ -179,15 +179,16 @@
       secoes.forEach(s => {
             const el = document.getElementById(s);
             if (el) {
-                if (s === id && el.style.display !== 'block') {
-                    el.style.display = 'block';
-                } else {
-                    el.style.display = 'none';
+                if (s === id ) {
+                    elel.style.display = (el.style.display === 'block') ? 'none' : 'block';
+} else {
+    // Garante que, ao abrir uma seção, todas as outras se fechem
+    el.style.display = 'none';
  }
             }
         });
         if(id === 'emergencia') carregarContatos();
-
+}
     function salvarContato() {
         const nome = document.getElementById('nomeContato').value;
         const tel = document.getElementById('telContato').value;
@@ -223,7 +224,7 @@
         }
     }
 
-    carregarContatos();
+   window.onload = carregarContatos();
 </script>
 
 </body>

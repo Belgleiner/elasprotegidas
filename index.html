@@ -70,19 +70,6 @@
     details { background: white; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #eee; }
     summary { font-weight: bold; cursor: pointer; color: var(--text-label); outline: none; }
 </style>
-
-// Registro do Service Worker para permitir instalação
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-    .then(() => console.log("Service Worker Registrado"));
-}
-
-// Código para detectar se pode instalar (opcional)
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-});
 </head>
 
 <body>

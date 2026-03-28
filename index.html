@@ -301,8 +301,9 @@ function apagarContato() { if(confirm('Apagar contato?')) { localStorage.removeI
 window.onload = carregarContatos;
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
-   ;
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => console.log('Motor de instalação ativo!'))
+    .catch(err => console.log('Erro no motor:', err));
 }
 </script>
 </body>

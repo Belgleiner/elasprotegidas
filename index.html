@@ -92,7 +92,7 @@
 
 <body>
 
-<button class="sair" onclick="window.location.replace('https://www.google.com')">Sair rápido</button>
+<button class="sair" onclick="window.location.href='about:blank'">Sair rápido</button>
 
 <div class="container">
 
@@ -100,23 +100,39 @@
     <div class="subtitulo">Rede de apoio à mulher pernambucana em situação de violência doméstica.</div>
 
     <div class="botoes-grid">
-        <a href="tel:190" class="btn sos" target="_blank">🚨 POLÍCIA (190)</a>
-        
-          <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank">⚖️ Peça sua Medida Protetiva</a>
-        <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal full-width" target="_blank">📝 Fazer B.O.</a>
-        
-        <a href="tel:180" class="btn normal" target="_blank">📞 Central 180</a>
-        <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">💬 WhatsApp (180)</a>
-
-        
-       <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</button>
-    <button class="btn normal" onclick="toggle('varas')">🏛️ Varas (TJPE)</button>
-<button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio</button>
-        <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
-        
-        <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
-        <button class="btn normal" onclick="toggle('fuga')">🧳 Plano Emergência</button>
+       <!-- EMERGÊNCIA -->
+<button class="btn sos" 
+    onmousedown="iniciarPressionamento()" 
+    onmouseup="cancelarPressionamento()" 
+    ontouchstart="iniciarPressionamento()" 
+    ontouchend="cancelarPressionamento()">
+    
+    <div style="display:flex; flex-direction:column; align-items:center;">
+        🚨 POLÍCIA (190)
+        <span style="font-size:0.65em; opacity:0.6; margin-top:4px;">
+            segure por 2s
+        </span>
     </div>
+</button>
+    <button class="btn normal full-width" onclick="iniciarFuga()">🚨 Preciso sair agora</button>
+
+    <!-- AÇÕES RÁPIDAS -->
+    <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank">⚖️ Pedir Medida Protetiva</a>
+    <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal full-width" target="_blank">📝 Fazer B.O.</a>
+
+    <!-- CONTATO IMEDIATO -->
+    <a href="tel:180" class="btn normal">📞 Central 180</a>
+    <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats">💬 Orientações pelo WhatsApp (180)</a>
+
+    <!-- APOIO DIRETO -->
+    <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
+    <button class="btn normal" onclick="toggle('fuga')">🧳 Plano de Emergência</button>
+
+    <!-- INFORMAÇÃO -->
+    <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
+    <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</button>
+    <button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio</button>
+    <button class="btn normal" onclick="toggle('varas')">🏛️ Varas de Violência (TJPE)</button>    </div>
 
     <div id="emergencia" class="resultado">
         <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong><br><br>
@@ -161,8 +177,28 @@
 
     <div id="fuga" class="resultado">
         <strong style="color: var(--color-primary);">🧳 Plano de Emergência:</strong><br><br>
-        Se as coisas piorarem e você precisar sair rápido de casa, deixe separado em um local fácil ou na casa de alguém de confiança: seus documentos e os das crianças, cartões do banco, dinheiro, chaves de casa/carro, remédios de uso contínuo, uma troca de roupa e qualquer outra coisa que você ache importante.
-    </div>
+Se precisar sair rapidamente, tente deixar preparado:<br><br>
+
+    ✔ Documentos (seus e das crianças)<br>
+    ✔ Cartões bancários e dinheiro<br>
+    ✔ Chaves (casa e carro)<br>
+    ✔ Remédios de uso contínuo<br>
+    ✔ Roupa extra<br>
+    ✔ Celular carregado<br><br>
+
+    <strong>🐾 Se você tiver animais:</strong><br>
+    ✔ Separe ração e água<br>
+    ✔ Tenha coleira ou caixa de transporte<br>
+    ✔ Leve documentos do animal (se tiver)<br>
+    ✔ Combine com alguém de confiança para acolher<br>
+        <span style="color:#d9534f; font-size:0.8em;">
+⚠️ Se não for possível levar, tente deixar o animal com alguém de confiança antes.
+</span><br><br>
+        
+        <strong>💡 Dica:</strong><br>
+    Deixe esses itens em local de fácil acesso ou na casa de alguém de confiança.
+</div>
+    
 <div id="varas" class="resultado">
     <strong style="color: var(--color-primary);">🏛️ Varas de Violência (TJPE)</strong><br><br>
     Consulte os telefones e endereços atualizados de todas as comarcas de Pernambuco no site oficial:<br><br>
@@ -179,7 +215,7 @@
     Para assistência jurídica gratuita e orientações sobre o seu processo:<br><br>
     <a href="https://www.defensoria.pe.def.br/" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 10px; border-radius: 8px; display: block; text-align: center;">🔗 Acessar Site da Defensoria</a>
 </div>
-    
+  <div id="fluxoFuga" class="resultado"></div>  
     <div class="alerta-seguranca"> 
         ⚠️ <strong>Dica de segurança:</strong> <br>
         Lembre-se de apagar o histórico do seu navegador após usar este site. Se você "baixar" este site como aplicativo, ele ficará salvo no seu celular com o nome de <strong>Bloco de Notas</strong>. 
@@ -190,10 +226,81 @@
        🌸 <span class="satisfy">Desenvolvido por Belizza Araújo - Oficiala de Justiça do TJPE</span>
     </div>
 </div>
+<script>
+const passosFuga = [
+"Pegue celular, documento e chave.",
+"Se possível, leve dinheiro e cartões.",
+"Pegue remédios e uma roupa.",
+"Se tiver filhos ou animais, leve-os ou deixe com alguém de confiança.",
+"Saia do local com segurança.",
+"Procure um lugar seguro (vizinho, familiar ou local público).",
+"Ligue 190 se estiver em risco."
+];
 
+let passoAtual = 0;
+
+function iniciarFuga() {
+    passoAtual = 0;
+    mostrarPasso();
+}
+
+function mostrarPasso() {
+    const box = document.getElementById('fluxoFuga');
+    box.style.display = 'block';
+
+    box.innerHTML = `
+        <strong style="color: var(--color-primary);">🚨 Ação imediata</strong><br><br>
+        <div style="margin-bottom: 15px;">
+            ${passosFuga[passoAtual]}
+        </div>
+        <button class="btn normal" onclick="proximoPasso()">➡️ Próximo</button>
+    `;
+}
+
+function proximoPasso() {
+    passoAtual++;
+    if (passoAtual < passosFuga.length) {
+        mostrarPasso();
+    } else {
+        document.getElementById('fluxoFuga').innerHTML = `
+            <strong style="color:#d9534f;">✔ Você fez o certo. Procure ajuda agora.</strong>
+                   `;
+    }
+}
+</script>
+
+    <script>
+let tempoPressionado;
+
+function iniciarPressionamento() {
+    if (navigator.vibrate) navigator.vibrate(100);
+    tempoPressionado = setTimeout(acionarEmergencia, 2000);
+}
+
+function cancelarPressionamento() {
+    clearTimeout(tempoPressionado);
+}
+
+function acionarEmergencia() {
+
+    // Liga para 190
+    window.location.href = "tel:190";
+
+    // Envia mensagem para contato salvo
+    const dados = JSON.parse(localStorage.getItem('contato_emergencia'));
+
+    if (dados && dados.tel) {
+        const mensagem = encodeURIComponent("Preciso de ajuda agora. Ligue para mim.");
+        
+        setTimeout(() => {
+            window.open(`https://api.whatsapp.com/send?phone=55${dados.tel}&text=${mensagem}`, '_blank');
+        }, 1500);
+    }
+}
+</script>
 <script>
     function toggle(id){
-        const secoes = ['emergencia', 'violencia', 'fuga', 'varas', 'rede', 'defensoria'];
+        const secoes = ['emergencia', 'violencia', 'fuga', 'varas', 'rede', 'defensoria', 'fluxoFuga'];
       secoes.forEach(s => {
             const el = document.getElementById(s);
             if (el) {
@@ -248,21 +355,6 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
     .then(() => console.log('SW registrado'));
-}
-</script>
-    <script>
-function isMobile() {
-  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
-
-// Se for desktop, muda discretamente o comportamento
-if (!isMobile()) {
-  document.title = "🌸 Central Mulher Protegida";
-}
-</script>
-    <script>
-if (!/Android|iPhone/i.test(navigator.userAgent)) {
-  document.querySelector("h1").innerText = "Bloco de Notas";
 }
 </script>
 </body>

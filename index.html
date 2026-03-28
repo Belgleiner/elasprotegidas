@@ -89,10 +89,10 @@
         <a href="tel:190" class="btn sos">🚨 POLÍCIA (190)</a>
         
         <a href="tel:180" class="btn normal">📞 Central 180</a>
-        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Medida Protetiva</a>
+        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Peça sua Medida Protetiva</a>
         
         <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
-        <a href="https://www.defensoria.pe.def.br/" class="btn normal" target="_blank">🛡️ Defensoria</a>
+        <a href="https://www.defensoria.pe.def.br/" class="btn normal" target="_blank">🛡️ Defensoria Pública</a>
         
         <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
         <button class="btn normal" onclick="toggle('violencia')">🛑 É violência?</button>
@@ -118,16 +118,43 @@
     </div>
 
     <div id="violencia" class="resultado">
-        <strong style="color: var(--color-primary);">🛑 Tipos de Violência:</strong><br>
-        • <b>Psicológica:</b> Humilhação, insultos e controle.<br>
+       <strong style="color: var(--color-primary); font-size: 1.1em;">🛑 Entenda a Violência</strong><br><br>
+    
+    <details style="margin-bottom: 10px;">
+        <summary style="font-weight: bold; cursor: pointer; color: var(--text-label);">🔍 Os Tipos (Lei Maria da Penha)</summary>
+        <p style="padding-left: 10px; font-size: 0.9em;">
+        • <b>Psicológica:</b> Humilhação, insultos, ameaças e proibir de sair. <br>
         • <b>Patrimonial:</b> Quebrar celular, rasgar roupas ou tirar seu dinheiro.<br>
         • <b>Física:</b> Empurrões, beliscões ou agressões.<br>
-        • <b>Moral:</b> Mentiras ou ofensas à sua honra.
+        • <b>Sexual:</b> Forçar relação íntima, impedir o uso de métodos contraceptivos ou forçar gravidez/aborto.<br>
+        • <b>Moral:</b> Mentiras ou ofensas à sua honra.<br>
+        • <b>Vicária:</b> Ameaça ou agride pessoas e/ou animais que você ama.<br>
+        • <b>Digital:</b> Divulga fotos/vídeos seus sem autorização.
+    
+    </p>
+    </details>
+
+    <details style="margin-bottom: 10px;">
+        <summary style="font-weight: bold; cursor: pointer; color: var(--text-label);">🔄 O Ciclo da Violência</summary>
+        <p style="padding-left: 10px; font-size: 0.9em;">
+            1. <b>Tensão:</b> As brigas começam por motivos bobos.<br>
+            2. <b>Explosão:</b> Ocorre a agressão (física ou verbal grave).<br>
+            3. <b>Lua de Mel:</b> Ele pede perdão, chora e diz que vai mudar. <b>Cuidado:</b> O ciclo quase sempre se repete e fica mais perigoso.
+        </p>
+    </details>
+
+    <details>
+        <summary style="font-weight: bold; cursor: pointer; color: var(--text-label);">⚖️ A Medida Protetiva</summary>
+        <p style="padding-left: 10px; font-size: 0.9em;">
+            É uma ordem do juiz para proteger você. Ela pode determinar o afastamento do agressor do lar e proibir que ele chegue perto ou ligue para você. Se ele descumprir, <b>pode ser preso imediatamente</b>.
+        </p>
+    </details>
+</div>
     </div>
 
     <div id="rede" class="resultado">
         <strong style="color: var(--color-primary);">🤝 Onde buscar ajuda:</strong><br>
-        Procure o CRAS, CREAS ou a Delegacia da Mulher mais próxima. Você tem direito a acolhimento sigiloso.
+        Procure o CRAS, CREAS, Forum, Secretaria, ou a Delegacia da Mulher mais próxima. Você tem direito a acolhimento sigiloso.
     </div>
 
     <div id="fuga" class="resultado">
@@ -137,7 +164,7 @@
 
     <div class="aviso">
         Ferramenta de apoio e orientação.<br>
-        🌸 <span class="satisfy">Belizza Araújo - Oficiala de Justiça</span>
+        🌸 <span class="satisfy">Desenvolvido por Belizza Araújo - Oficiala de Justiça do TJPE</span>
     </div>
 </div>
 
@@ -175,6 +202,15 @@
             lista.innerHTML = "<em style='font-size: 0.8em;'>Nenhum contato salvo ainda.</em>";
         }
     }
+    function apagarContato() {
+        if(confirm('Deseja realmente apagar este contato?')) {
+            localStorage.removeItem('contato_emergencia');
+            carregarContatos();
+        }
+    }
+
+    // Inicializa a lista ao abrir
+    carregarContatos();
 </script>
 
 </body>

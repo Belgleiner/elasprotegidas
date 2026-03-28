@@ -79,10 +79,8 @@
     .aviso { margin-top: 30px; font-size: 0.85em; color: #999; line-height: 1.5; }
     .alerta-seguranca { margin-top: 15px; font-size: 0.8em; color: #d9534f; font-weight: bold; }
 
-/* BOTÃO DE SAÍDA RÁPIDA */
-    .sair { position: fixed; top: 10px; right: 10px; background: #6c757d; color: white; padding: 8px 12px; border: none; border-radius: 8px; font-size: 0.8em; font-weight: bold; z-index: 1000; cursor: pointer; }
-
-    .aviso { margin-top: 30px; font-size: 0.8em; color: #999; line-height: 1.5; }
+    .contato-item { background: white; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+    .contato-item a { color: var(--color-primary); text-decoration: none; font-weight: bold; }
 </style>
 
 <meta name="theme-color" content="#b76e79">
@@ -108,8 +106,9 @@
     <div class="botoes-grid">
         <a href="tel:190" class="btn sos" id="sos" target="_blank">🚨 Polícia (190)</a>
         <a href="tel:180" class="btn normal" target="_blank" >📞 Central 180</a>
-        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Medida Protetiva</a>
+        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Peça uma Medida Protetiva</a>
         <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
+        <button class="btn normal" onclick="toggle('emergencia')">👥 Contatos de Emergência</button>
         <button class="btn normal" onclick="toggle('varas')">🏛️ Varas (TJPE)</button>
         <button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio e delegacias</button>
         <button class="btn normal" onclick="toggle('violencia')">🛑 É violência?</button>
@@ -123,6 +122,20 @@
     <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20orienta%C3%A7%C3%A3o" class="btn whats" target="_blank">
         💬 Orientações pelo WhatsApp (Central 180)
     </a>
+
+    <div id="emergencia" class="resultado">
+        <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong><br><br>
+        Tenha sempre o número de pessoas próximas que podem te ajudar em um momento de crise.<br><br>
+        <div class="contato-item">
+            <span>📞 Contato 01</span>
+            <a href="tel:">Ligar agora</a>
+        </div>
+        <div class="contato-item">
+            <span>📞 Contato 02</span>
+            <a href="tel:">Ligar agora</a>
+        </div>
+        <small style="color: #888;">* Oriente a usuária a salvar os números de parentes ou amigos aqui.</small>
+    </div>
 
     <div id="varas" class="resultado">
         <strong style="color: var(--color-primary);">🏛️ Varas de Violência Doméstica</strong><br><br>
@@ -153,7 +166,7 @@
     </div>
 
     <div class="alerta-seguranca">
-        ⚠️ Dica de segurança: Lembre-se de apagar o histórico do seu navegador após usar este site, para que ninguém saiba o que você acessou. <br>Se você baixar o aplicativo ele ficará salvo no seu celular com o nome de Calendário Menstrual.
+        ⚠️ Dica de segurança: Lembre-se de apagar o histórico do seu navegador após usar este site. <br>Se você instalar este aplicativo, ele aparecerá no celular com o nome e ícone de <b>Bloco de Notas</b>.
     </div>
 
     <div class="aviso">
@@ -164,7 +177,6 @@ Esta é uma ferramenta informativa independente, que facilita o acesso a canais 
 </div>
 
 <script>
-
 // Limpar histórico visual ao sair
 window.addEventListener("beforeunload", () => {
     document.body.innerHTML = "";
@@ -178,7 +190,7 @@ window.addEventListener("beforeunload", () => {
     }
 
     function toggle(id){
-        const secoes = ['varas', 'rede', 'violencia', 'fuga'];
+        const secoes = ['varas', 'rede', 'violencia', 'fuga', 'emergencia'];
         secoes.forEach(secao => {
             if (secao !== id) {
                 document.getElementById(secao).style.display = "none";

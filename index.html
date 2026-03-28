@@ -299,6 +299,11 @@ function carregarContatos() {
 
 function apagarContato() { if(confirm('Apagar contato?')) { localStorage.removeItem('contato_emergencia'); carregarContatos(); } }
 window.onload = carregarContatos;
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('App pronto para instalar'));
+}
 </script>
 </body>
 </html>

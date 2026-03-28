@@ -35,7 +35,7 @@
     
     .normal { background: var(--color-secondary); }
     .sos { background-color: #d9534f; grid-column: span 2; padding: 20px; font-size: 1.1em; animation: pulse 2s infinite; }
-    .whats { background-color: #25d366; grid-column: span 2; padding: 15px; margin-top: 5px; }
+    .whats { background-color: #25d366; } /* Removido o grid-column: span 2 */
     
     @keyframes pulse {
         0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.5); }
@@ -54,6 +54,10 @@
     .btn-cor { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid white; }
     
     .sair { position: fixed; top: 10px; right: 10px; background: #6c757d; color: white; padding: 8px 12px; border: none; border-radius: 8px; font-size: 0.75em; font-weight: bold; z-index: 1000; cursor: pointer; }
+    
+    /* ESTILO DA DICA DE SEGURANÇA */
+    .alerta-seguranca { margin-top: 20px; padding: 15px; border-radius: 10px; background: #fff5f5; border: 1px solid #ffcccc; color: #d9534f; font-size: 0.8em; line-height: 1.4; font-weight: 500; }
+    
     .aviso { margin-top: 30px; font-size: 0.75em; color: #999; line-height: 1.5; }
     .satisfy { font-family: 'Satisfy', cursive; color: var(--color-primary); font-size: 1.2em; }
     
@@ -80,22 +84,19 @@
         <a href="tel:190" class="btn sos" target="_blank">🚨 POLÍCIA (190)</a>
         
         <a href="tel:180" class="btn normal" target="_blank">📞 Central 180</a>
-        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Peça sua Medida Protetiva</a>
-        
-        <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
-        <a href="https://www.defensoria.pe.def.br/" class="btn normal" target="_blank">🛡️ Defensoria Pública</a>
-        
-        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" class="btn normal">🏛️ Varas de Violência Doméstica (TJPE)</a>
-        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos/rede-de-protecao" target="_blank" class="btn normal">🤝 Rede Apoio</a>
-        
-        <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
-        <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
-        
-        <button class="btn normal" onclick="toggle('fuga')" style="grid-column: span 2;">🧳 Plano de Emergência (Fuga)</button>
+        <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">💬 WhatsApp (180)</a>
 
-        <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">
-            💬 Orientaçõs pelo WhtsApp (180)
-        </a>
+        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ M. Protetiva</a>
+        <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
+        
+        <a href="https://www.defensoria.pe.def.br/" class="btn normal" target="_blank">🛡️ Defensoria</a>
+        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" class="btn normal">🏛️ Varas (TJPE)</a>
+        
+        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos/rede-de-protecao" target="_blank" class="btn normal">🤝 Rede Apoio</a>
+        <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
+        
+        <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
+        <button class="btn normal" onclick="toggle('fuga')">🧳 Plano Emergência</button>
     </div>
 
     <div id="emergencia" class="resultado">
@@ -111,7 +112,6 @@
 
     <div id="violencia" class="resultado">
         <strong style="color: var(--color-primary); font-size: 1.1em;">🛑 Entenda a Violência</strong><br><br>
-        
         <details>
             <summary>🔍 Tipos (Lei Maria da Penha)</summary>
             <p style="font-size: 0.85em; margin-top: 10px;">
@@ -124,7 +124,6 @@
                 • <b>Digital:</b> Expor fotos/vídeos sem autorização.
             </p>
         </details>
-
         <details>
             <summary>🔄 O Ciclo da Violência</summary>
             <p style="font-size: 0.85em; margin-top: 10px;">
@@ -133,7 +132,6 @@
                 3. <b>Lua de Mel:</b> Ele pede perdão e promete mudar. <b>Cuidado:</b> O ciclo quase sempre se repete.
             </p>
         </details>
-
         <details>
             <summary>⚖️ A Medida Protetiva</summary>
             <p style="font-size: 0.85em; margin-top: 10px;">
@@ -146,10 +144,15 @@
         <strong style="color: var(--color-primary);">🧳 Plano de Emergência:</strong><br><br>
         Se as coisas piorarem e você precisar sair rápido de casa, deixe separado em um local fácil ou na casa de alguém de confiança: seus documentos e os das crianças, cartões do banco, dinheiro, chaves de casa/carro, remédios de uso contínuo, uma troca de roupa e qualquer outra coisa que você ache importante.
     </div>
-<div class="alerta-seguranca"> ⚠️ Dica de segurança: <br>Lembre-se de apagar o histórico do seu navegador após usar este site, para que ninguém saiba o que você acessou. <br>Se você baixar o aplicativo ele ficará salvo no seu celular com o nome de Bloco de Notas. </div>
+
+    <div class="alerta-seguranca"> 
+        ⚠️ <strong>Dica de segurança:</strong> <br>
+        Lembre-se de apagar o histórico do seu navegador após usar este site. Se você "baixar" este site como aplicativo, ele ficará salvo no seu celular com o nome de <strong>Bloco de Notas</strong>. 
+    </div>
+
     <div class="aviso">
        Esta é uma ferramenta informativa independente, sem vínculo com órgãos oficiais, que facilita o acesso à rede pública de proteção.<br>
-        🌸 <span class="satisfy">Desenvolvido por Belizza Araújo - Oficiala de Justiça do TJPE</span>
+       🌸 <span class="satisfy">Desenvolvido por Belizza Araújo - Oficiala de Justiça do TJPE</span>
     </div>
 </div>
 

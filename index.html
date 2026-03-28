@@ -76,7 +76,6 @@
 </head>
 
 <body>
-
 <button class="sair" onclick="window.location.href='about:blank'">Sair rápido</button>
 
 <div class="container">
@@ -233,7 +232,7 @@
         <div id="defensoria" class="resultado">
         <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.85em; color: #d9534f; line-height: 1.4;">
             ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
-            O número <b>0800 081 0129</b> aceita ligações gratuitas. Tente ligar se precisar de orientação jurídica urgente.
+            O número <b>0800 081 0129</b> aceita ligações gratuitas. Tente ligar se precisar de orientação jurídica urgente.</div>
         <strong style="color: var(--color-primary);">🛡️ Defensoria Pública (PE)</strong><br><br>
         <p style="font-size: 0.85em;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia.</p><br>
         <a href="https://www.defensoria.pe.def.br/" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 10px; border-radius: 8px; display: block; text-align: center;">🔗 Site da Defensoria Pública</a>
@@ -256,23 +255,27 @@ let passoAtual = 0;
 
 function iniciarFuga() {
     const box = document.getElementById('fluxoFuga');
+    const grid = document.querySelector('.botoes-grid');
+    
+    // Esconde o menu para focar na saída de emergência
+    grid.style.display = 'none'; 
     box.style.display = 'block';
     
-    // Transforma a lista em um texto direto e visível de uma vez
-    const listaDireta = passosFuga.map((passo, index) => `<b>${index + 1}.</b> ${passo}`).join('<br>');
+    const listaDireta = passosFuga.map((passo, index) => `<b>${index + 1}.</b> ${passo}`).join('<br><br>');
     
     box.innerHTML = `
-        <strong style="color: #d9534f; font-size: 1.1em;">🚨 AÇÃO IMEDIATA - SIGA OS PASSOS:</strong><br><br>
-        <div style="background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #ffcccc;">
+        <strong style="color: #d9534f; font-size: 1.2em;">🚨 AÇÃO IMEDIATA:</strong><br><br>
+        <div style="background: #fff; padding: 15px; border-radius: 8px; border: 2px solid #d9534f; font-size: 1.1em;">
             ${listaDireta}
         </div>
         <br>
-        <strong style="color:#d9534f;">✔ Você fez o certo! Não se preocupe e peça ajuda!</strong>
+        <button onclick="location.reload()" style="width:100%; padding:15px; border-radius:12px; border:none; background:#6c757d; color:white; font-weight:bold; font-size:1em; cursor:pointer;">
+            ⬅️ Voltar para o Menu Principal
+        </button>
     `;
-    
-    // Rola a tela automaticamente para o conteúdo que abriu
-    box.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo(0,0);
 }
+
 
 function acionarEmergencia() {
     // Abre o discador do celular com o 190 imediatamente
@@ -315,6 +318,12 @@ function carregarContatos() {
 
 function apagarContato() { if(confirm('Apagar contato?')) { localStorage.removeItem('contato_emergencia'); carregarContatos(); } }
 window.onload = carregarContatos;
+
+// Substitua a função de sair para ser mais discreta
+function sairRapido() {
+    // Isso substitui a página atual no histórico por uma busca comum
+    window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
+}
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js')

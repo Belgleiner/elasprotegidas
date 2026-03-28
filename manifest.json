@@ -1,6 +1,7 @@
 {
   "short_name": "Notas",
   "name": "Bloco de Notas",
+  "description": "Aplicativo simples para anotações rápidas.",
   "icons": [
     {
       "src": "icon.png",
@@ -17,5 +18,7 @@
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#b76e79",
-  "background_color": "#fdf7fa"
+  "background_color": "#fdf7fa",
+  "orientation": "portrait",
+  "scope": "./"
 }

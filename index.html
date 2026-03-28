@@ -35,7 +35,7 @@
     
     .normal { background: var(--color-secondary); }
     .sos { background-color: #d9534f; grid-column: span 2; padding: 20px; font-size: 1.1em; animation: pulse 2s infinite; }
-    .whats { background-color: #25d366; } /* Removido o grid-column: span 2 */
+    .whats { background-color: var(--color-secondary); } /* Removido o grid-column: span 2 */
     
     @keyframes pulse {
         0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.5); }
@@ -89,9 +89,9 @@
         <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal" target="_blank">⚖️ Peça sua Medida Protetiva</a>
         <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal" target="_blank">📝 Fazer B.O.</a>
         
-        <a href="https://www.defensoria.pe.def.br/" class="btn normal" target="_blank">🛡️ Defensoria Pública</a>
-        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" class="btn normal">🏛️ Varas de Violência (TJPE)</a>
-       <button class="btn normal" onclick="toggle('rede')">🤝 Rede Apoio</button>
+       <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</a>
+    <button class="btn normal" onclick="toggle('varas')">🏛️ Varas (TJPE)</button>
+<button class="btn normal" onclick="toggle('rede')">🤝 Rede Apoio</button>
         <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
         
         <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
@@ -101,7 +101,7 @@
     <div id="emergencia" class="resultado">
         <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong><br><br>
         <div id="formContato">
-            <p style="font-size: 0.85em;">Salve alguém que pode te ajudar. Fica guardado apenas no seu celular.</p>
+            <p style="font-size: 0.85em;">Adicione alguém que pode te ajudar. Fica guardado apenas no seu celular.</p>
             <input type="text" id="nomeContato" class="input-contato" placeholder="Nome da pessoa">
             <input type="tel" id="telContato" class="input-contato" placeholder="Telefone com DDD">
             <button class="btn-salvar" onclick="salvarContato()">Salvar Contato</button>
@@ -143,45 +143,23 @@
         <strong style="color: var(--color-primary);">🧳 Plano de Emergência:</strong><br><br>
         Se as coisas piorarem e você precisar sair rápido de casa, deixe separado em um local fácil ou na casa de alguém de confiança: seus documentos e os das crianças, cartões do banco, dinheiro, chaves de casa/carro, remédios de uso contínuo, uma troca de roupa e qualquer outra coisa que você ache importante.
     </div>
+<div id="varas" class="resultado">
+    <strong style="color: var(--color-primary);">🏛️ Varas de Violência (TJPE)</strong><br><br>
+    Consulte os telefones e endereços atualizados de todas as comarcas de Pernambuco no site oficial:<br><br>
+    <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1px solid var(--color-primary); padding: 8px; border-radius: 5px; display: block; text-align: center;">🔗 Ver Telefones Oficiais</a>
+</div>
+
 <div id="rede" class="resultado">
-        <strong style="color: var(--color-primary);">🤝 Rede de Apoio</strong><br><br>
-        • <b>Ouvidoria da Mulher (Pernambuco):</b> <a href="tel:08002818187" style="color:var(--color-primary);">0800 281 8187</a><br>
-       • <b>Núcleo de Apoio à Mulher - Promotora de Justiça Maria Aparecida da Silva Clemente (NAM)</b> <a href="tel:81992323667" style="color:var(--color-primary);">(81) 99232-3667</a><br>
-        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos/rede-de-protecao" target="_blank" style="color:var(--color-primary); font-weight:bold;">🔗 Para contatos de Delegacias e Centros Especializados</a>
-
-       </div>
-
-    <div id="varas" class="resultado">
-        <strong style="color: var(--color-primary); font-size: 1.1em;">🏛️ Telefones das Varas Especializadas (TJPE)</strong><br><br>
-        <details>
-            <summary>📍 Região Metropolitana (RMR)</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
-                • Recife: 1ª Vara de Medidas Protetivas - <a href="tel:08131810620">(81) 3181-0620<br>
-                    2ª Vara de Medidas Protetivas - <a href="tel:08131810512">(81) 3181-0512<br>
-                        1ª Vara de Enfrentamento à Violência - <a href="tel:08131813284">(81) 3181-3284<br>
-                            2ª Vara de Enfrentamento à Violência - <a href="tel:08131813284">(81) 3181-3284<br>
-                            3º Vara de Enfrentamento à Violência - <a href="tel:08131810146">(81) 3181-0146<br></a>
-                        • Olinda e Paulista: <a href="tel:08131822755">(81) 3182-2755</a><br>
-                                    • Cabo: <a href="tel:08131819402">(81) 3181-9402<br></a>
-                 • Camaragibe: <a href="tel:08131819299">(81) 3181-9299<br></a>
-                                • Igarassu e Abreu e Lima: <a href="tel:08131819304">(81) 3181-9304</a><br> 
-                                • Jaboatão: <a href="tel:08131815833">(81) 3181-5833</a>
-                                 
-             
-            </p>
-        </details>
-        <details>
-            <summary>📍 Agreste e Sertão</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
-                • Caruaru: <a href="tel:08137257675">(81) 3725-7675</a><br>
-                • Petrolina: <a href="tel:08738669806">(87) 3866-9806</a><br>
-              
-          <p style="font-size: 0.7em; color: #888; text-align: center; margin-top: 15px; border-top: 1px dashed #ddd; padding-top: 10px;">
-    ⚠️ <strong>Nota da Oficiala:</strong> Estes números são verificados periodicamente. Caso um telefone não atenda, clique no link abaixo para acessar a lista atualizada em tempo real no site do TJPE.
-</p>
-        </details>
-        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="font-size: 0.7em; display: block; text-align: center; margin-top: 10px; color: #888;">Ver outras comarcas no site do TJPE</a>
-    </div>
+    <strong style="color: var(--color-primary);">🤝 Rede de Apoio</strong><br><br>
+    Encontre Centros de Referência e Casas Abrigo em todo o Estado de Pernambuco:<br><br>
+    <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1px solid var(--color-primary); padding: 8px; border-radius: 5px; display: block; text-align: center;">🔗 Ver Rede de Proteção</a>
+</div>
+<div id="defensoria" class="resultado">
+    <strong style="color: var(--color-primary);">🛡️ Defensoria Pública (PE)</strong><br><br>
+    Para assistência jurídica gratuita e orientações sobre o seu processo:<br><br>
+    <a href="https://www.defensoria.pe.def.br/" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 10px; border-radius: 8px; display: block; text-align: center;">🔗 Acessar Site da Defensoria</a>
+</div>
+    
     <div class="alerta-seguranca"> 
         ⚠️ <strong>Dica de segurança:</strong> <br>
         Lembre-se de apagar o histórico do seu navegador após usar este site. Se você "baixar" este site como aplicativo, ele ficará salvo no seu celular com o nome de <strong>Bloco de Notas</strong>. 

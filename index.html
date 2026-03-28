@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bloco de Notas</title>
-
+<link rel="manifest" href="manifest.json">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
     
@@ -69,6 +69,24 @@
     
     details { background: white; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #eee; }
     summary { font-weight: bold; cursor: pointer; color: var(--text-label); outline: none; }
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+        border-radius: 12px;
+        margin-top: 30px;
+    }
+
+    .botoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .btn {
+        font-size: 0.9em;
+        padding: 16px;
+    }
+}
 </style>
 </head>
 
@@ -226,6 +244,26 @@
 
    window.onload = carregarContatos;
 </script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('SW registrado'));
+}
+</script>
+    <script>
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
 
+// Se for desktop, muda discretamente o comportamento
+if (!isMobile()) {
+  document.title = "Bloco de Notas Online";
+}
+</script>
+    <script>
+if (!/Android|iPhone/i.test(navigator.userAgent)) {
+  document.querySelector("h1").innerText = "Bloco de Notas";
+}
+</script>
 </body>
 </html>

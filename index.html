@@ -91,7 +91,7 @@
         <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">💬 WhatsApp (180)</a>
 
         
-       <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</a>
+       <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</button>
     <button class="btn normal" onclick="toggle('varas')">🏛️ Varas (TJPE)</button>
 <button class="btn normal" onclick="toggle('rede')">🤝 Rede Apoio</button>
         <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
@@ -175,15 +175,18 @@
 
 <script>
     function toggle(id){
-        const secoes = ['emergencia', 'violencia', 'fuga'];
-        secoes.forEach(s => {
+        const secoes = ['emergencia', 'violencia', 'fuga', 'varas', 'rede', 'defensoria'];
+      secoes.forEach(s => {
             const el = document.getElementById(s);
-            if (el) el.style.display = (s === id && el.style.display !== 'block') ? 'block' : 'none';
+            if (el) {
+                if (s === id && el.style.display !== 'block') {
+                    el.style.display = 'block';
+                } else {
+                    el.style.display = 'none';
+ }
+            }
         });
         if(id === 'emergencia') carregarContatos();
-    }
-
-    function mudarTema(cl) { document.body.className = cl; }
 
     function salvarContato() {
         const nome = document.getElementById('nomeContato').value;

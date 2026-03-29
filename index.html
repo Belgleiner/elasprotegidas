@@ -9,10 +9,12 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
  
-    /* RESET GLOBAL: A regra de ouro para não quebrar no celular */
+        /* 1. RESET TOTAL: Garante que nada escape da tela */
     * { 
         box-sizing: border-box; 
         max-width: 100%;
+        margin: 0;
+        padding: 0;
     }
    
     :root {
@@ -24,13 +26,38 @@
         --bg-box: #fff5f7;
         --text-main: #444;
         --text-label: #7a4a52;
-        --color-danger: #d9534f; /* COR VERMELHA ADICIONADA AQUI */
+        --color-danger: #d9534f;
     }
 
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg-body); margin: 0; padding: 0; display: flex; justify-content: center; color: var(--text-main); transition: 0.3s; }
+    /* 2. BODY TRAVADO: Sem rolagem lateral */
+    body { 
+        font-family: 'Segoe UI', Arial, sans-serif; 
+        background: var(--bg-body); 
+        display: flex; 
+        justify-content: center; 
+        color: var(--text-main); 
+        overflow-x: hidden; 
+        width: 100%;
+    }
     
-    .container { background: var(--bg-container); width: 100%; max-width: 450px; padding: 25px; margin: 0 auto; min-height: 100vh; border-top: 8px solid var(--color-primary); box-sizing: border-box; text-align: center; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
-    
+    /* 3. CONTAINER AJUSTADA: Padding menor e largura controlada */
+    .container { 
+        background: var(--bg-container); 
+        width: 100%; 
+        max-width: 450px; 
+        padding: 15px; /* Reduzi de 25px para 15px para não estourar */
+        margin: 0 auto; 
+        min-height: 100vh; 
+        border-top: 8px solid var(--color-primary); 
+        box-sizing: border-box; 
+        text-align: center; 
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        overflow-x: hidden;
+    }
+   
+  
+
+   
     h1 { color: var(--color-primary); margin-bottom: 5px; font-size: 1.5em; }
     .subtitulo { font-size: 0.85em; color: #888; margin-bottom: 20px; }
     

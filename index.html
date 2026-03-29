@@ -9,7 +9,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
  
-        /* 1. RESET TOTAL: Garante que nada escape da tela */
+    /* 1. RESET TOTAL: Impede que qualquer elemento estique a tela lateralmente */
     * { 
         box-sizing: border-box; 
         max-width: 100%;
@@ -29,52 +29,64 @@
         --color-danger: #d9534f;
     }
 
-    /* 2. BODY TRAVADO: Sem rolagem lateral */
+    /* 2. BODY TRAVADO: Força o navegador a nunca mostrar barra lateral */
     body { 
         font-family: 'Segoe UI', Arial, sans-serif; 
         background: var(--bg-body); 
         display: flex; 
         justify-content: center; 
         color: var(--text-main); 
-        overflow-x: hidden; 
-        width: 100%;
+        overflow-x: hidden; /* CRUCIAL: Trava a rolagem horizontal */
+        width: 100vw;
     }
     
-    /* 3. CONTAINER AJUSTADA: Padding menor e largura controlada */
+    /* 3. CONTAINER AJUSTADA: Centraliza tudo e mantém dentro dos limites */
     .container { 
         background: var(--bg-container); 
         width: 100%; 
         max-width: 450px; 
-        padding: 15px; /* Reduzi de 25px para 15px para não estourar */
+        padding: 20px; 
         margin: 0 auto; 
         min-height: 100vh; 
         border-top: 8px solid var(--color-primary); 
-        box-sizing: border-box; 
         text-align: center; 
         box-shadow: 0 0 20px rgba(0,0,0,0.05);
-        overflow-x: hidden;
+        overflow-x: hidden; /* Impede que o conteúdo interno empurre a borda */
+        position: relative;
     }
-   
-  
 
-   
-    h1 { color: var(--color-primary); margin-bottom: 5px; font-size: 1.5em; }
-    .subtitulo { font-size: 0.85em; color: #888; margin-bottom: 20px; }
+    h1 { color: var(--color-primary); margin: 20px 0 5px 0; font-size: 1.5em; }
+    .subtitulo { font-size: 0.85em; color: #888; margin-bottom: 20px; line-height: 1.4; }
     
-    .botoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+    .botoes-grid { 
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+        margin-top: 10px;
+        width: 100%;
+    }
     
-    .btn { padding: 14px 8px; border: none; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: 0.3s; font-size: 0.95em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .btn { 
+        padding: 14px 8px; 
+        border: none; 
+        border-radius: 12px; 
+        color: white; 
+        font-weight: bold; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        text-align: center; 
+        cursor: pointer; 
+        font-size: 0.95em; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    }
     
-    .normal { background: var(--color-secondary); }
- /* ESTILO DO BOTÃO 190 - VERMELHO VIVO */
     .sos { 
         background-color: var(--color-danger) !important; 
         grid-column: span 2; 
         padding: 22px; 
         font-size: 1.3em; 
         animation: pulse 2s infinite; 
-        color: white !important;
-        display: flex !important;
     }
 
     .btn.full-width {
@@ -82,113 +94,70 @@
         padding: 18px !important;
         font-size: 1em !important;
         background-color: var(--color-primary);
-        font-weight: 800;
-        letter-spacing: 0.5px;
-}
-    .whats { background-color: var(--color-secondary); }
-
-   
-    
-    @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.5); }
-        70% { box-shadow: 0 0 0 10px rgba(217, 83, 79, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
     }
     
-    /* AJUSTE NA LEITURA PRINCIPAL */
     .resultado { 
         margin-top: 15px; 
         background: var(--bg-box); 
-        padding: 20px; /* Aumentado para dar respiro */
+        padding: 15px; 
         border-radius: 12px; 
         text-align: left; 
         border-left: 6px solid var(--color-secondary); 
         display: none; 
-        font-size: 0.95em; /* Fonte padrão confortável */
-        line-height: 1.6; /* Espaçamento entre linhas para não cansar a vista */
+        font-size: 0.95em; 
+        line-height: 1.6;
+        word-wrap: break-word; /* Quebra links ou textos muito longos */
     }
-/* Adicione este bloco logo abaixo do .resultado para padronizar os links */
-.resultado a {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.95em; /* IGUAL AOS BOTÕES DO MENU PRINCIPAL */
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-    
-    .input-contato { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
-    .btn-salvar { background: var(--color-primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 5px; font-weight: bold; }
-    
-    .link-ligar { display: block; margin-top: 15px; color: #d9534f; font-weight: bold; text-decoration: none; text-align: center; border: 2px solid #d9534f; padding: 10px; border-radius: 8px; font-size: 1.1em; }
 
+    .resultado a {
+        display: block; text-align: center; text-decoration: none; font-weight: bold; font-size: 0.95em;
+        padding: 12px; border-radius: 8px; margin-top: 15px; color: var(--color-primary); border: 1.5px solid var(--color-primary);
+    }
+
+    /* 4. BOTÃO SAIR: Ajustado para não flutuar para fora da tela */
     .sair { 
-    position: fixed;   /* Isso faz ele ficar parado no topo da tela */
-    top: 10px;         /* Distância do topo */
-    right: 10px;       /* Distância da direita */
-    background: #6c757d; /* COR CINZA (Pode mudar aqui) */
-    color: white; 
-    padding: 8px 12px; 
-    border: none; 
-    border-radius: 8px; 
-    font-size: 0.75em; 
-    font-weight: bold; 
-    z-index: 1000;     /* Faz ele ficar por cima de tudo */
-    cursor: pointer; 
-    opacity: 0.9; 
-}
+        position: absolute; /* Mudado de fixed para absolute para ficar preso à container */
+        top: 15px; 
+        right: 15px; 
+        background: #6c757d; 
+        color: white; 
+        padding: 6px 10px; 
+        border: none; 
+        border-radius: 8px; 
+        font-size: 0.7em; 
+        z-index: 10;
+    }
     
-    .alerta-seguranca { margin-top: 20px; padding: 15px; border-radius: 10px; background: #fff5f5; border: 1px solid #ffcccc; color: #d9534f; font-size: 0.8em; line-height: 1.4; font-weight: 500; }
+    /* 5. ALERTAS: Ajustados para nunca passarem da largura da container */
+    .alerta-seguranca { 
+        margin-top: 25px; 
+        padding: 15px; 
+        border-radius: 10px; 
+        background: #fff5f5; 
+        border: 1px solid #ffcccc; 
+        color: #d9534f; 
+        font-size: 0.85em; 
+        line-height: 1.5; 
+        text-align: left;
+        width: 100%;
+    }
     
-    .aviso { margin-top: 30px; font-size: 0.75em; color: #999; line-height: 1.5; }
+    .aviso { 
+        margin-top: 30px; 
+        font-size: 0.75em; 
+        color: #999; 
+        line-height: 1.5; 
+        padding-bottom: 20px;
+        width: 100%;
+    }
+
     .satisfy { font-family: 'Satisfy', cursive; color: var(--color-primary); font-size: 1.2em; }
     
-/* AJUSTE NOS DETALHES (SANFONAS) */
-    details { 
-        background: white; 
-        padding: 12px; 
-        border-radius: 10px; 
-        margin-bottom: 10px; 
-        border: 1px solid #f0f0f0; 
-        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-    }
-    
-    summary { 
-        font-weight: 700; 
-        cursor: pointer; 
-        color: var(--text-label); 
-        font-size: 1em;
-    }
+    details { background: white; padding: 10px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #f0f0f0; }
+    summary { font-weight: 700; cursor: pointer; color: var(--text-label); font-size: 0.95em; }
 
-/* Adicione este bloco no final do seu <style> */
-.btn-whatsapp-discreto {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.95em; /* Mesma fonte dos botões do menu */
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 15px;
-    transition: 0.3s;
-    /* Cores discretas da sua identidade */
-    color: var(--color-primary); 
-    border: 1.5px solid var(--color-primary);
-    background-color: transparent; /* Fundo transparente para não chamar atenção */
-}
-
-.btn-whatsapp-discreto:hover {
-    background-color: var(--bg-box); /* Leve destaque ao passar o mouse */
-}
-
-@media (min-width: 768px) {
-    .container { max-width: 600px; border-radius: 12px; margin-top: 30px; }
-    .botoes-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    .btn { font-size: 1.1em; padding: 16px; }
-}
+    .input-contato { width: 100%; padding: 12px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; }
+    .btn-salvar { background: var(--color-primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; font-weight: bold; margin-top: 10px; }
 </style>
 </head>
 

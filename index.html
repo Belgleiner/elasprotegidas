@@ -174,10 +174,12 @@
 
         <button class="btn normal full-width" onclick="iniciarFuga()">🆘️ Preciso sair agora</button>
 
-        <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank">⚖️ Pedir Medida Protetiva</a>     <small style="display: block; color: #d9534f; font-size: 0.75em; font-weight: bold; margin-bottom: 10px;">
+      <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank" style="flex-direction: column; padding: 12px !important; gap: 6px;">
+    <span style="font-size: 1.05em;">⚖️ Pedir Medida Protetiva</span>
+    <span style="font-size: 0.75em; background: rgba(255, 255, 255, 0.25); padding: 4px 10px; border-radius: 6px; font-weight: 600; line-height: 1.2; text-align: center;">
         ⚠️ NÃO precisa de B.O. nem de provas para pedir agora!
-    </small>
-</div>
+    </span>
+</a>
         <a href="https://servicos.sds.pe.gov.br/delegacia/" class="btn normal"  target="_blank">📝 Fazer B.O.</a>
  <button class="btn normal" onclick="toggle('saude')">🏥 Sofreu violência sexual?</button>
         
@@ -303,64 +305,57 @@
         </details>
     
 
-<hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-<strong style="color: var(--color-primary); font-size: 0.9em;">❓ Dúvidas Rápidas (FAQ)</strong><br><br>
+    <details style="background: white; border: 2px solid var(--color-primary); margin-top: 25px; border-radius: 10px; padding: 12px;">
+            <summary style="font-size: 1.05em; color: var(--color-primary); font-weight: bold; text-align: center; cursor: pointer;">❓ Clique aqui para abrir as Dúvidas Rápidas (FAQ)</summary>
+            
+            <div style="display: grid; gap: 8px; margin-top: 15px;">
+                <details style="background: #fdf7fa;">
+                    <summary style="font-size: 0.85em;">👤 Como ele é avisado?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça entrega a ordem via WhatsApp ou presencialmente. Ele é obrigado a cumprir a distância ou se afastar na hora.</p>
+                </details>
 
-<div style="display: grid; gap: 8px;">
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">👤 Como ele é avisado?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça entrega a ordem via WhatsApp ou presencialmente. Ele é obrigado a cumprir a distância ou se afastar na hora.</p>
-    </details>
+                <details style="background: #fdf7fa;">
+                    <summary style="font-size: 0.85em;">🏠 E se ele tiver que sair de casa?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça entra em contato com você para saber se ele ainda está lá e vai ao local. Ele é obrigado a sair da casa imediatamente.</p>
+                </details>
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">🏠 E se ele tiver que sair de casa?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça entra em contato com você para saber se ele ainda está lá e vai ao local. Ele é obrigado a sair da casa imediatamente.</p>
-    </details>
+                <details style="background: #fdf7fa;">
+                    <summary style="font-size: 0.85em;">🔑 Posso trocar as fechaduras da casa?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;">Sim! Se o juiz determinou o afastamento dele, você pode e deve trocar as fechaduras para sua segurança.</p>
+                </details>
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">🔑 Posso trocar as fechaduras da casa?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">Sim! Se o juiz determinou o afastamento dele, você pode e deve trocar as fechaduras para sua segurança.</p>
-    </details>
+                <details style="background: #fdf7fa;">
+                    <summary style="font-size: 0.85em;">🚫 E se ele se recusar a sair?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça aciona o <b>apoio policial</b> e retira o agressor de casa à força, se necessário, para garantir sua segurança.</p>
+                </details>
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">🚫 E se ele se recusar a sair?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça aciona o <b>apoio policial</b> e retira o agressor de casa à força, se necessário, para garantir sua segurança.</p>
-    </details>
+                <details style="background: #fdf7fa;">
+                    <summary style="font-size: 0.85em;">⛔ E se ele não estiver em casa na hora?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça informa por telefone (ou vai até onde ele estiver) avisando que ele <b>não pode mais retornar para casa</b> sob pena de prisão.</p>
+                </details>
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">⛔ E se ele não estiver em casa na hora?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">O Oficial de Justiça informa por telefone (ou vai até onde ele estiver) avisando que ele <b>não pode mais retornar para casa</b> sob pena de prisão.</p>
-    </details>
+                <details style="background: #fdf7fa;">
+                    <summary style="font-size: 0.85em;">👜 Posso pegar minhas coisas ou voltar para casa?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;">Sim. Você pode pedir acompanhamento policial para retirar seus pertences. Se quiser morar na casa de novo, o Juiz dará uma <b>ordem de recondução</b>.</p>
+                </details>
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">👜 Posso pegar minhas coisas ou voltar para casa?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">Sim. Você pode pedir acompanhamento policial para retirar seus pertences. Se quiser morar na casa de novo, o Juiz dará uma <b>ordem de recondução</b>.</p>
-    </details>
+              
+                <details style="background: #eef7ff; border: 1px solid #cce5ff;">
+                    <summary style="font-size: 0.85em; color: #004085; font-weight: bold;">🩹 Tenho direito a tratar as marcas físicas?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em; line-height: 1.6; color: #004085;">
+                        Sim! A <b>Lei 13.239/2015</b> garante que o SUS realize <b>cirurgias plásticas reparadoras gratuitas</b>. Como <b>Fisioterapeuta</b>, reforço que você também tem direito à <b>reabilitação física prioritária</b> para recuperar movimentos e sua autoestima.
+                    </p>
+                </details>
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">📱 Mensagens no WhatsApp/Instagram?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">É proibido! Se ele mandar, tire "print". <b>Isso é descumprimento e gera prisão</b>.</p>
-    </details>
+                <details style="background: #fff5f5; border: 1.5px solid var(--color-danger);">
+                    <summary style="font-size: 0.85em; color: var(--color-danger); font-weight: bold;">🚨 O que fazer se ele descumprir?</summary>
+                    <p style="margin-top: 10px; font-size: 0.85em;"><b>Ligue para o 190 na hora!</b> O descumprimento gera prisão em flagrante. Guarde prints e registros de ligações como prova para o juiz.</p>
+                </details>
+            </div>
+        </details>
+                    
 
-    <details style="background: #fdf7fa;">
-        <summary style="font-size: 0.85em;">💼 Posso perder o emprego se me afastar?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;">Não! A Lei Maria da Penha garante a manutenção do seu emprego por até 6 meses se o afastamento for necessário para sua segurança.</p>
-    </details>
- <details style="background: #eef7ff; border: 1px solid #cce5ff; margin-top: 10px;">
-        <summary style="font-size: 0.9em; color: #004085; font-weight: bold;">🩹 Tenho direito a tratar as marcas físicas da agressão?</summary>
-        <p style="margin-top: 10px; font-size: 0.95em; line-height: 1.6; color: #004085;">
-            Sim! A <b>Lei 13.239/2015</b> garante que o SUS realize <b>cirurgias plásticas reparadoras gratuitas</b> para tratar marcas e sequelas de agressões. 
-            <br><br>
-            Como <b>Fisioterapeuta</b>, reforço que você também tem direito à <b>reabilitação física prioritária</b> para recuperar movimentos e sua autoestima. Procure uma unidade de saúde para iniciar seu encaminhamento.
-        </p>
-    </details>
-
-
-    <details style="background: #fff5f5; border: 1.5px solid var(--color-danger);">
-        <summary style="font-size: 0.85em; color: var(--color-danger); font-weight: bold;">🚨 O que fazer se ele descumprir?</summary>
-        <p style="margin-top: 10px; font-size: 0.85em;"><b>Ligue para o 190 na hora!</b> O descumprimento gera prisão em flagrante. Guarde prints e registros de ligações como prova para o juiz.</p>
-    </details>
-</div> </div>
+</div>
 
 <div id="fuga" class="resultado">
         <strong style="color: var(--color-primary); font-size: 1em; display: block; margin-bottom: 15px;">🧳 Plano de Emergência</strong>
@@ -482,29 +477,43 @@ const passosFuga = [ "Respire fundo. Você não está sozinha e este é o primei
     "Se o agressor estiver por perto, ligue 190 imediatamente." ]
 let passoAtual = 0;
 
+// SUBSTITUA ESTA FUNÇÃO:
 function iniciarFuga() {
     const box = document.getElementById('fluxoFuga');
     const grid = document.querySelector('.botoes-grid');
     
-    // Esconde o menu para focar na saída de emergência
     grid.style.display = 'none'; 
 
-
-    // 3. LIMPEZA TOTAL: Esconde qualquer aba de texto que estiver aberta
     const secoesParaFechar = ['emergencia', 'violencia', 'fuga', 'varas', 'rede', 'defensoria', 'saude'];
     secoesParaFechar.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
     });
-    box.style.display = 'block';
     
+    box.style.display = 'block';
     const listaDireta = passosFuga.map((passo, index) => `<b>${index + 1}.</b> ${passo}`).join('<br><br>');
     
+    // --- LÓGICA ACRESCENTADA AQUI ---
+    const dados = JSON.parse(localStorage.getItem('contato_emergencia'));
+    let botaoWhatsApp = ''; 
+    
+    if (dados && dados.tel) {
+        const numeroZap = dados.tel.startsWith('55') ? dados.tel : '55' + dados.tel;
+        const msg = encodeURIComponent('ESTOU EM PERIGO. Preciso de ajuda agora! Ligue para 190!');
+        const linkZap = `https://api.whatsapp.com/send?phone=${numeroZap}&text=${msg}`;
+        
+        botaoWhatsApp = `
+        <button onclick="window.open('${linkZap}', '_blank')" style="width:100%; padding:18px; border-radius:12px; border:none; background:#25D366; color:white; font-weight:bold; font-size:1.1em; cursor:pointer; margin-bottom:10px;">
+            💬 AVISAR ${dados.nome.toUpperCase()} (WHATSAPP)
+        </button>`;
+     
+    }
     box.innerHTML = `
         <strong style="color: #d9534f; font-size: 1.25em; display: block; text-align: center; margin-bottom: 15px;">🆘️ GUIA DE SAÍDA SEGURA</strong><br><br>
         <div style="background: #fff; padding: 15px; border-radius: 8px; border: 2px solid #d9534f; font-size: 1.1em;">
             ${listaDireta}
         </div>
+    ${botaoWhatsApp}
         <br>
         <button onclick="acionarEmergencia()" style="width:100%; padding:18px; border-radius:12px; border:none; background:#d9534f; color:white; font-weight:bold; font-size:1.1em; cursor:pointer; margin-bottom:10px;">
             🚨 LIGAR PARA POLÍCIA (190)
@@ -517,18 +526,10 @@ function iniciarFuga() {
 }
 
 
+// SUBSTITUA ESTA FUNÇÃO (REMOVIDO O SETTIMEOUT):
 function acionarEmergencia() {
-    // Abre o discador do celular com o 190 imediatamente
     window.location.href = "tel:190";
-    
-    // Tenta enviar o alerta de WhatsApp para o contato de confiança (se cadastrado) após 1.5s
-    const dados = JSON.parse(localStorage.getItem('contato_emergencia'));
-    if (dados && dados.tel) {
-        setTimeout(() => { 
-            window.open(`https://api.whatsapp.com/send?phone=55${dados.tel}&text=ESTOU EM PERIGO. Chamei a polícia e preciso de ajuda agora!`, '_blank'); 
-        }, 1500);
     }
-}
 
 
 function toggle(id){

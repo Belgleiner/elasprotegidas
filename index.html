@@ -62,7 +62,18 @@
         100% { box-shadow: 0 0 0 0 rgba(217, 83, 79, 0); }
     }
     
-    .resultado { margin-top: 15px; background: var(--bg-box); padding: 15px; border-radius: 10px; text-align: left; border-left: 5px solid var(--color-secondary); display: none; font-size: 0.9em; line-height: 1.5; }
+    /* AJUSTE NA LEITURA PRINCIPAL */
+    .resultado { 
+        margin-top: 15px; 
+        background: var(--bg-box); 
+        padding: 20px; /* Aumentado para dar respiro */
+        border-radius: 12px; 
+        text-align: left; 
+        border-left: 6px solid var(--color-secondary); 
+        display: none; 
+        font-size: 1em; /* Fonte padrão confortável */
+        line-height: 1.6; /* Espaçamento entre linhas para não cansar a vista */
+    }
     
     .input-contato { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
     .btn-salvar { background: var(--color-primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 5px; font-weight: bold; }
@@ -90,8 +101,22 @@
     .aviso { margin-top: 30px; font-size: 0.75em; color: #999; line-height: 1.5; }
     .satisfy { font-family: 'Satisfy', cursive; color: var(--color-primary); font-size: 1.2em; }
     
-    details { background: white; padding: 10px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #eee; }
-    summary { font-weight: bold; cursor: pointer; color: var(--text-label); outline: none; }
+/* AJUSTE NOS DETALHES (SANFONAS) */
+    details { 
+        background: white; 
+        padding: 12px; 
+        border-radius: 10px; 
+        margin-bottom: 10px; 
+        border: 1px solid #f0f0f0; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+    
+    summary { 
+        font-weight: 700; 
+        cursor: pointer; 
+        color: var(--text-label); 
+        font-size: 0.95em;
+    }
 
 @media (min-width: 768px) {
     .container { max-width: 600px; border-radius: 12px; margin-top: 30px; }
@@ -145,7 +170,7 @@
         • <b>Contracepção:</b> Prevenção de gravidez indesejada.<br>
   • <b>Acolhimento:</b> Acolhimento e apoio psicológico.<br><br>
         
-        <strong>📍 Centros de Referência (SAVVIS)</strong><br>
+        <strong>🏥 Hospitais de Referência (SAVVIS)</strong><br>
         Equipes especializadas em vítimas de violência sexual:<br><br>
         
         <details>
@@ -193,7 +218,7 @@
     <div id="emergencia" class="resultado">
         <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong><br><br>
         <div id="formContato">
-            <p style="font-size: 0.85em;">Adicione alguém que pode te ajudar. Fica guardado apenas no seu celular.</p>
+            <p style="font-size: 0.85em;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. </p>
             <input type="text" id="nomeContato" class="input-contato" placeholder="Nome da pessoa">
             <input type="tel" id="telContato" class="input-contato" placeholder="Telefone com DDD">
             <button class="btn-salvar" onclick="salvarContato()">Salvar Contato</button>
@@ -204,8 +229,7 @@
     <div id="violencia" class="resultado">
     <div style="background: #fff5f7; padding: 12px; border-radius: 8px; border-left: 5px solid var(--color-primary); margin-bottom: 15px;">
         <span style="font-size: 0.9em; color: var(--text-label);"><b>Você não tem culpa:</b> A violência começa muito antes da agressão física. Ela nasce no controle, no silêncio e no medo. Identificar é o primeiro passo para a liberdade.</span>
-    </div>
-
+    
     <strong style="color: var(--color-primary); font-size: 1.1em;">🛑 O Ciclo e os Tipos</strong><br><br>
         <details>
             <summary>🔍 Tipos (Lei Maria da Penha)</summary>
@@ -251,16 +275,16 @@
     </div>
 
      <div id="rede" class="resultado">
-        <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.85em; color: #d9534f; line-height: 1.4;">
+        <div style="background: #fff5f5; padding: 15px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 18px; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
             ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
         <strong style="color: var(--color-primary);">🤝 Rede de Apoio</strong><br><br>
-        <p style="font-size: 0.85em;">Apoio jurídico, social e segurança em um só lugar. 
+        <p style="font-size: 1.1em;display: block; margin-bottom: 10px;">Apoio jurídico, social e segurança em um só lugar. 
         </p>  
     <details>
         <summary>📞 Ouvidorias e Denúncias</summary>
-        <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.6;">
+        <p style="font-size: 0.95em; margin-top: 10px; line-height: 1.6;">
             • <b>TJPE (Justiça):</b> 0800 281 2021 ou 159 (Dúvidas sobre seu processo).<br>
             • <b>Estado (Sec. Mulher):</b> 0800 281 0107 (Denúncias e orientações).<br>
             • <b>Patrulha Maria da Penha:</b> Ligue 190 (Fiscalização da sua medida).

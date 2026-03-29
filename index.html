@@ -71,9 +71,21 @@
         text-align: left; 
         border-left: 6px solid var(--color-secondary); 
         display: none; 
-        font-size: 1em; /* Fonte padrão confortável */
+        font-size: 0.95em; /* Fonte padrão confortável */
         line-height: 1.6; /* Espaçamento entre linhas para não cansar a vista */
     }
+/* Adicione este bloco logo abaixo do .resultado para padronizar os links */
+.resultado a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95em; /* IGUAL AOS BOTÕES DO MENU PRINCIPAL */
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
     
     .input-contato { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
     .btn-salvar { background: var(--color-primary); color: white; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; margin-top: 5px; font-weight: bold; }
@@ -115,7 +127,7 @@
         font-weight: 700; 
         cursor: pointer; 
         color: var(--text-label); 
-        font-size: 0.95em;
+        font-size: 1em;
     }
 
 @media (min-width: 768px) {
@@ -160,7 +172,7 @@
     </div>
 
     <div id="saude" class="resultado">
-        <strong style="color: var(--color-primary); font-size: 1.1em;">🏥 Onde buscar ajuda médica agora?</strong><br><br>
+        <strong style="color: var(--color-primary);">🏥 Onde buscar ajuda médica agora?</strong><br><br>
         
         <strong>1. Vá à unidade mais próxima:</strong><br>
         Procure qualquer <b>UPA 24h</b> ou <b>Hospital Público</b>. O atendimento deve ser prioritário e sigiloso. Eles devem tratar ferimentos e fornecer a pílula do dia seguinte.<br><br>
@@ -175,7 +187,7 @@
         
         <details>
             <summary>📍 Paulista</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="; margin-top: 10px;">
                 • <b>Hosp. Miguel Arraes (BR-101):</b> (81) 3184-5400<br>
                 • <b>Maternidade de Paulista (Centro):</b> (81) 3433-0500
             </p>
@@ -183,7 +195,7 @@
 
         <details>
             <summary>📍 Recife</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="margin-top: 10px;">
                 • <b>Hosp. da Mulher (Curado):</b> (81) 3355-2300<br>
                 • <b>IMIP (Coelhos):</b> (81) 2122-4100<br>
                 • <b>Hosp. Agamenon Magalhães:</b> (81) 3184-1600<br>
@@ -193,7 +205,7 @@
 
         <details>
             <summary>📍 Jaboatão e Olinda</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="margin-top: 10px;">
                 • <b>Jaboatão:</b> Hosp. Memorial Jaboatão: (81) 3481-4266<br>
                 • <b>Olinda:</b> Hosp. Tricentenário: (81) 3429-4577
             </p>
@@ -201,7 +213,7 @@
 
         <details>
             <summary>📍 Interior (Referências)</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="margin-top: 10px;">
                 • <b>Caruaru:</b> Hosp. Jesus Nazareno<br>
                 • <b>Petrolina:</b> Hosp. Dom Malan<br>
                 • <b>Garanhuns:</b> Hosp. Dom Moura
@@ -218,7 +230,7 @@
     <div id="emergencia" class="resultado">
         <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong><br><br>
         <div id="formContato">
-            <p style="font-size: 0.85em;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. </p>
+            <p style="font-size: 0.95em;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. </p>
             <input type="text" id="nomeContato" class="input-contato" placeholder="Nome da pessoa">
             <input type="tel" id="telContato" class="input-contato" placeholder="Telefone com DDD">
             <button class="btn-salvar" onclick="salvarContato()">Salvar Contato</button>
@@ -228,19 +240,19 @@
 
     <div id="violencia" class="resultado">
  <div style="background: #fffafa; padding: 15px; border-radius: 8px; border: 1px solid #ffeded; margin-bottom: 20px; line-height: 1.5;">
-        <strong style="color: var(--color-primary); font-size: 1.1em;">🌸 Você não tem culpa.</strong><br>
-        <span style="font-size: 0.9em; color: var(--text-label);">
+        <strong style="color: var(--color-primary);">🌸 Você não tem culpa.</strong><br>
+        <span style="color: var(--text-label);">
             A violência nunca é justificada. Ela começa no controle, no silêncio e no medo. Identificar esses sinais é o seu primeiro passo para a liberdade.
         </span>
     </div>
-    <strong style="color: var(--color-primary); font-size: 1.1em;">🛑 O Ciclo e os Tipos</strong><br><br>
+    <strong style="color: var(--color-primary); font-size: 1em;">🛑 O Ciclo e os Tipos</strong><br><br>
         <details>
             <summary>🔍 Tipos (Lei Maria da Penha)</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="margin-top: 10px;">
                 • <b>Psicológica:</b> Humilhação, insultos, ameaças e controle.<br>
                 • <b>Patrimonial:</b> Quebrar bens, rasgar roupas ou tirar dinheiro.<br>
                 • <b>Física:</b> Qualquer agressão ao seu corpo.<br>
-                • <b>Sexual:</b> Forçar relação ou proibir uso de métodos que evitam gravidez.
+                • <b>Sexual:</b> Forçar relação ou proibir uso de métodos que evitam gravidez.<br>
                 • <b>Moral:</b> Mentiras ou ofensas à sua honra.<br>
                 • <b>Vicária:</b> Usar pessoas ou animais que você ama para te atingir.<br>
                 • <b>Digital:</b> Expor fotos/vídeos sem autorização.
@@ -248,28 +260,27 @@
         </details>
         <details>
             <summary>🔄 O Ciclo da Violência</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="margin-top: 10px;">
                 1. <b>Tensão:</b> Brigas constantes por motivos bobos.<br>
                 2. <b>Explosão:</b> Ocorre a agressão grave.<br>
-                3. <b>Lua de Mel:</b> Ele pede perdão e promete mudar. <b>Cuidado:</b> O ciclo quase sempre se repete.
+                3. <b>Lua de Mel:</b> Ele pede perdão e promete mudar. <br><b>Cuidado:</b> O ciclo quase sempre se repete.
             </p>
         </details>
         <details>
             <summary>⚖️ A Medida Protetiva</summary>
-            <p style="font-size: 0.85em; margin-top: 10px;">
+            <p style="margin-top: 10px;">
                 Ordem judicial para sua proteção. Pode afastar o agressor do lar e proibir contato. Se ele descumprir, <b>pode ser preso imediatamente</b>. Lembre-se: você não precisa de provas! Sua palavra é suficiente!
-            </p>
-<p style="font-size: 0.85em;">Como Oficiala de Justiça, garanto: você tem direito a ser informada sobre cada decisão do juiz.</p>
+            <br>Como Oficiala de Justiça, garanto: você tem direito a ser informada sobre cada decisão do juiz.</p>
         </details>
     </div>
 
 <div id="fuga" class="resultado">
-        <strong style="color: var(--color-primary); font-size: 1.1em; display: block; margin-bottom: 15px;">🧳 Plano de Emergência</strong>
+        <strong style="color: var(--color-primary); font-size: 1em; display: block; margin-bottom: 15px;">🧳 Plano de Emergência</strong>
         
-        <p style="font-size: 0.85em; color: #666; margin-bottom: 12px;">Se precisar sair rapidamente, tente deixar preparado:</p>
+        <p style="color: #666; margin-bottom: 12px;">Se precisar sair rapidamente, tente deixar preparado:</p>
 
-        <div style="font-size: 0.9em; line-height: 1.6; color: var(--text-main);">
-           <strong style="font-size: 0.9em; color: var(--text-label);">Para você:</strong><br>
+        <div style= "line-height: 1.6; color: var(--text-main);">
+           <strong style="color: var(--text-label);">Para você:</strong><br>
             ✔ Documentos (seus e dos filhos)<br>
             ✔ Cartões bancários e dinheiro<br>
             ✔ Chaves (casa e carro)<br>
@@ -278,32 +289,32 @@
             ✔ Celular e carregador
         </div>
 
-        <div style="margin-top: 20px; padding: 12px; background: #fff5f5; border-radius: 8px; border: 1px solid #ffcccc; font-size: 0.85em; color: #d9534f; line-height: 1.4;">
+        <div style="margin-top: 20px; padding: 12px; background: #fff5f5; border-radius: 8px; border: 1px solid #ffcccc; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
             ⚠️ <b>Fique alerta:</b> É comum que o agressor use os <b>filhos ou animais</b> para fazer ameaças e tentar forçar você a voltar. Não ceda a essa pressão e procure ajuda das autoridades imediatamente.
         </div>
 
         <div style="margin-top: 25px; border-top: 1px solid #f0f0f0; padding-top: 15px;">
-            <strong style="font-size: 0.9em; color: var(--text-label);">🐾 Se você tiver animais:</strong><br>
-            <div style="font-size: 0.85em; line-height: 1.6; color: var(--text-main); margin-top: 8px;">
+            <strong style= "color: var(--text-label);">🐾 Se você tiver animais:</strong><br>
+            <div style="line-height: 1.6; color: var(--text-main); margin-top: 8px;">
                 ✔ Separe ração e água<br>
                 ✔ Tenha coleira ou caixa de transporte<br>
                 ✔ Leve documentos do animal (se tiver)<br>
                 ✔ Combine com alguém de confiança para acolher
             </div>
             
-            <p style="color:#d9534f; font-size:0.8em; font-weight: 600; margin-top: 12px; line-height: 1.4;">
+            <p style="color:#d9534f; font-size:0.9em; font-weight: 600; margin-top: 12px; line-height: 1.4;">
                 ⚠️ Se não for possível levar, tente deixar o animal com alguém de confiança antes.
             </p>
         </div>
     </div>
     
 <div id="varas" class="resultado">
-        <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.85em; color: #d9534f; line-height: 1.4;">
+        <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
             ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
-        <strong style="color: var(--color-primary);">🏛️ Varas de Violência (TJPE)</strong><br><br>
-        <p style="font-size: 0.85em;">Unidades da Justiça que decidem sobre Medidas Protetivas e processos criminais. Se precisar de informações sobre seu processo, consulte os contatos oficiais.</p><br>
+        <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🏛️ Varas de Violência (TJPE)</strong><br><br>
+        <p style=display: block; margin-bottom: 10px;">Unidades da Justiça que decidem sobre Medidas Protetivas e processos criminais. Se precisar de informações sobre seu processo, consulte os contatos oficiais.</p><br>
         <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 12px; border-radius: 8px; display: block; text-align: center;">🔗 Ver telefones e endereços das Varas</a>
     </div>
 
@@ -312,11 +323,11 @@
             ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
-        <strong style="color: var(--color-primary);">🤝 Rede de Apoio</strong><br><br>
-        <p style="font-size: 1.1em;display: block; margin-bottom: 10px;">Apoio jurídico, social e segurança em um só lugar. </p>  
+        <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🤝 Rede de Apoio</strong><br><br>
+        <p style=display: block; margin-bottom: 10px;">Apoio jurídico, social e segurança em um só lugar. </p>  
     <details>
         <summary>📞 Ouvidorias e Denúncias</summary>
-        <p style="font-size: 0.95em; margin-top: 10px; line-height: 1.6;">
+        <p style= "margin-top: 10px; line-height: 1.6;">
             • <b>Ouvidoria da Mulher do TJPE (Justiça):</b> 0800 281 2021 ou 159 (Denúnicas de violência e dúvidas sobre seu processo).<br>
             • <b>Ouvidoria da Mulher do Estado (Sec. Mulher):</b> 0800 281 0107 (Denúncias e orientações sobre Rede de Apoio).<br>
             • <b>Patrulha Maria da Penha:</b> Ligue 190 (Fiscalização da sua medida protetiva).
@@ -325,7 +336,7 @@
 
     <details style="margin-top: 5px;">
         <summary>🏠 Apoio Local e Abrigamento</summary>
-        <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.6;">
+        <p style="margin-top: 10px; line-height: 1.6;">
             • <b>Centros de Referência:</b> Apoio psicológico e social em cada cidade.<br>
             • <b>Abrigamento:</b> Se você não tiver para onde ir e estiver em risco, a rede estadual garante sua acolhida sigilosa.<br>
             • <b>Secretarias Municipais:</b> Atendimento direto na sua prefeitura.
@@ -334,7 +345,7 @@
 
     <details style="margin-top: 5px;">
         <summary>🏛️ Delegacias e Varas (PE)</summary>
-        <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.6;">
+        <p style="margin-top: 10px; line-height: 1.6;">
             • <b>Delegacias da Mulher:</b> Atendimento 24h especializado.<br>
             • <b>Varas de Violência:</b> Onde o juiz decide sua proteção. Consulte os endereços de todo o estado no link abaixo.
         </p>
@@ -345,14 +356,14 @@
         🔗 Ver telefones e endereços de toda a Rede de Apoio (PE)</a>
    </div>
         <div id="defensoria" class="resultado">
-        <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.85em; color: #d9534f; line-height: 1.4;">
+        <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
             ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
             Tente contato com o número <b>0800 081 0129 ou com O WhatsApp</b>. Tente ligar se precisar de orientação jurídica urgente.
 </div>
-        <strong style="color: var(--color-primary);">🛡️ Defensoria Pública (PE)</strong><br><br>
-        <p style="font-size: 0.85em;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia. Lembre-se: mesmo sem fotos ou hematomas, a sua palavra na medida protetiva é o que importa! </p><br>
+        <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🛡️ Defensoria Pública (PE)</strong><br><br>
+        <p style=display: block; margin-bottom: 10px;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia. Lembre-se: mesmo sem fotos ou hematomas, a sua palavra na medida protetiva é o que importa! </p><br>
 
-    <p style="font-size: 0.9em; line-height: 1.6;">
+    <p style="line-height: 1.6;">
         📱 <b>WhatsApp (NUDEM):</b> (81) 99488-2217<br>
         📞 <b>Dúvidas Gratuitas:</b> 0800 081 0129<br>
         📍 <b>Atendimento Presencial:</b> Procure os núcleos da Defensoria Pública na sua Cidade.

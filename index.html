@@ -121,7 +121,7 @@
 @media (min-width: 768px) {
     .container { max-width: 600px; border-radius: 12px; margin-top: 30px; }
     .botoes-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    .btn { font-size: 0.9em; padding: 16px; }
+    .btn { font-size: 1.1em; padding: 16px; }
 }
 </style>
 </head>
@@ -146,7 +146,7 @@
  <button class="btn normal" onclick="toggle('saude')">🏥 Sofreu violência sexual?</button>
         
         <a href="tel:180" class="btn normal">📞 Central 180</a>
-        <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats">💬 WhatsApp 180</a>
+        <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">💬 WhatsApp 180</a>
 
         <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
         <button class="btn normal" onclick="toggle('fuga')">🧳 Plano de Emergência</button>
@@ -155,7 +155,7 @@
         
         <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
         <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</button>
-        <button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio</button>
+        <button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio </button>
         <button class="btn normal" onclick="toggle('varas')">🏛️ Varas de Violência (TJPE)</button>
     </div>
 
@@ -269,7 +269,7 @@
         <p style="font-size: 0.85em; color: #666; margin-bottom: 12px;">Se precisar sair rapidamente, tente deixar preparado:</p>
 
         <div style="font-size: 0.9em; line-height: 1.6; color: var(--text-main);">
-            <strong>Para você:</strong><br>
+           <strong style="font-size: 0.9em; color: var(--text-label);">Para você:</strong><br>
             ✔ Documentos (seus e dos filhos)<br>
             ✔ Cartões bancários e dinheiro<br>
             ✔ Chaves (casa e carro)<br>
@@ -283,7 +283,7 @@
         </div>
 
         <div style="margin-top: 25px; border-top: 1px solid #f0f0f0; padding-top: 15px;">
-            <strong style="font-size: 0.9em; color: var(--text-label);">🐾 Se você tiver animais:</strong>
+            <strong style="font-size: 0.9em; color: var(--text-label);">🐾 Se você tiver animais:</strong><br>
             <div style="font-size: 0.85em; line-height: 1.6; color: var(--text-main); margin-top: 8px;">
                 ✔ Separe ração e água<br>
                 ✔ Tenha coleira ou caixa de transporte<br>
@@ -304,7 +304,7 @@
         </div>
         <strong style="color: var(--color-primary);">🏛️ Varas de Violência (TJPE)</strong><br><br>
         <p style="font-size: 0.85em;">Unidades da Justiça que decidem sobre Medidas Protetivas e processos criminais. Se precisar de informações sobre seu processo, consulte os contatos oficiais.</p><br>
-        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 12px; border-radius: 8px; display: block; text-align: center; font-size: 0.85em;">🔗 Ver telefones e endereços das Varas</a>
+        <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 12px; border-radius: 8px; display: block; text-align: center;">🔗 Ver telefones e endereços das Varas</a>
     </div>
 
      <div id="rede" class="resultado">
@@ -318,8 +318,8 @@
         <summary>📞 Ouvidorias e Denúncias</summary>
         <p style="font-size: 0.95em; margin-top: 10px; line-height: 1.6;">
             • <b>Ouvidoria da Mulher do TJPE (Justiça):</b> 0800 281 2021 ou 159 (Denúnicas de violência e dúvidas sobre seu processo).<br>
-            • <b>Ouvidoria da Mulher do Estado (Sec. Mulher):</b> 0800 281 0107 (Denúncias e orientações).<br>
-            • <b>Patrulha Maria da Penha:</b> Ligue 190 (Fiscalização da sua medida).
+            • <b>Ouvidoria da Mulher do Estado (Sec. Mulher):</b> 0800 281 0107 (Denúncias e orientações sobre Rede de Apoio).<br>
+            • <b>Patrulha Maria da Penha:</b> Ligue 190 (Fiscalização da sua medida protetiva).
         </p>
     </details>
 
@@ -341,7 +341,7 @@
     </details>
 
     <br>
-    <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos/rede-de-protecao" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 12px; border-radius: 8px; display: block; text-align: center; font-size: 0.85em;">
+    <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/servicos/rede-de-protecao" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 12px; border-radius: 8px; display: block; text-align: center;">
         🔗 Ver telefones e endereços de toda a Rede de Apoio (PE)</a>
    </div>
         <div id="defensoria" class="resultado">
@@ -367,7 +367,10 @@
         ⚠️ <strong>Dica de segurança:</strong> Apague o histórico do navegador após sair desse site. Baixado como app, ele aparece como <strong>Bloco de Notas</strong>. 
     </div>
 
-    <div class="aviso">
+    <div class="aviso" style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+    <p style="font-size: 0.9em; line-height: 1.4; color: #777; margin-bottom: 20px; text-align: justify;">
+        <b>⚠️ Ferramenta Independente:</b> Este guia foi desenvolvido de forma autônoma para facilitar o acesso à informação. Os serviços aqui listados são de responsabilidade dos órgãos públicos competentes. Em caso de perigo iminente, ligue sempre para o <b>190</b>.
+    </p>
        🌸 <span class="satisfy">Desenvolvido por Belizza Araújo - Oficiala de Justiça do TJPE</span>
     </div>
 </div><script>

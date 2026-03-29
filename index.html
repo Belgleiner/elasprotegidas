@@ -130,6 +130,27 @@
         font-size: 1em;
     }
 
+/* Adicione este bloco no final do seu <style> */
+.btn-whatsapp-discreto {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95em; /* Mesma fonte dos botões do menu */
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: 0.3s;
+    /* Cores discretas da sua identidade */
+    color: var(--color-primary); 
+    border: 1.5px solid var(--color-primary);
+    background-color: transparent; /* Fundo transparente para não chamar atenção */
+}
+
+.btn-whatsapp-discreto:hover {
+    background-color: var(--bg-box); /* Leve destaque ao passar o mouse */
+}
+
 @media (min-width: 768px) {
     .container { max-width: 600px; border-radius: 12px; margin-top: 30px; }
     .botoes-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -228,14 +249,14 @@
     </div>
 
     <div id="emergencia" class="resultado">
-        <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong>
-        <div id="formContato">
-            <p style=display: block; margin-bottom: 10px;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. </p>
-            <input type="text" id="nomeContato" class="input-contato" placeholder="Nome da pessoa">
-            <input type="tel" id="telContato" class="input-contato" placeholder="Telefone com DDD">
-            <button class="btn-salvar" onclick="salvarContato()">Salvar Contato</button>
-        </div>
-        <div id="listaContatos" style="margin-top: 10px;"></div>
+    <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong>
+    <div id="formContato">
+        <p style="display: block; margin-bottom: 10px;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. *Lembre de colocar o DDD.*</p>
+        <input type="text" id="nomeContato" class="input-contato" placeholder="Nome da pessoa">
+        <input type="tel" id="telContato" class="input-contato" placeholder="Telefone com DDD">
+        <button class="btn-salvar" onclick="salvarContato()">Salvar Contato</button>
+    </div>
+    <div id="listaContatos" style="margin-top: 10px;"></div>
     </div>
 
     <div id="violencia" class="resultado">
@@ -245,7 +266,7 @@
             A violência nunca é justificada. Ela começa no controle, no silêncio e no medo. Identificar esses sinais é o seu primeiro passo para a liberdade.
         </span>
     </div>
-    <strong style="color: var(--color-primary); font-size: 1em;">🛑 O Ciclo e os Tipos</strong><br><br>
+    <strong style="color: var(--color-primary);">🛑 O Ciclo e os Tipos</strong><br><br>
         <details>
             <summary>🔍 Tipos (Lei Maria da Penha)</summary>
             <p style="margin-top: 10px;">
@@ -466,15 +487,39 @@ function salvarContato() {
     const tel = document.getElementById('telContato').value;
     if(nome && tel) { localStorage.setItem('contato_emergencia', JSON.stringify({nome, tel})); carregarContatos(); }
 }
-
 function carregarContatos() {
     const dados = JSON.parse(localStorage.getItem('contato_emergencia'));
     const lista = document.getElementById('listaContatos');
     const form = document.getElementById('formContato');
     if(dados) {
         form.style.display = 'none';
-        lista.innerHTML = `<div style="background:white;padding:15px;border-radius:10px;border:1px solid #eee;text-align:center;"><strong>${dados.nome}</strong><a href="tel:${dados.tel}" class="link-ligar">📞 LIGAR</a><br><button onclick="apagarContato()" style="background:none;border:none;color:#999;font-size:0.8em;text-decoration:underline;margin-top:10px;">🗑️ Trocar</button></div>`;
-    } else { form.style.display = 'block'; lista.innerHTML = ""; }
+        
+        // Prepara o número (remove parênteses, espaços, etc.) e a mensagem
+        const numeroLimpo = dados.tel.replace(/\D/g,'');
+        const mensagemPredefinida = encodeURIComponent(`ESTOU EM PERIGO. Preciso de ajuda agora! Ligue para 190!`);
+        
+        // Cria o link do WhatsApp
+        const linkZap = `https://api.whatsapp.com/send?phone=55${numeroLimpo}&text=${mensagemPredefinida}`;
+
+        lista.innerHTML = `
+            <div style="background:white;padding:15px;border-radius:10px;border:1px solid #eee;text-align:center;">
+                <strong style="font-size: 1.1em; color: var(--text-main);">${dados.nome}</strong>
+                
+                <a href="tel:${dados.tel}" class="link-ligar">📞 LIGAR AGORA</a>
+                
+                <a href="${linkZap}" target="_blank" class="btn-whatsapp-discreto">
+                    💬 Enviar Mensagem de Socorro
+                </a>
+                
+                <br>
+                <button onclick="apagarContato()" style="background:none;border:none;color:#999;font-size:0.8em;text-decoration:underline;margin-top:15px;">
+                    🗑️ Trocar Contato
+                </button>
+            </div>`;
+    } else { 
+        form.style.display = 'block'; 
+        lista.innerHTML = ""; 
+    }
 }
 
 function apagarContato() { if(confirm('Apagar contato?')) { localStorage.removeItem('contato_emergencia'); carregarContatos(); } }

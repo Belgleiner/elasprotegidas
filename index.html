@@ -182,6 +182,29 @@
     background-color: var(--bg-box); /* Leve destaque ao passar o mouse */
 }
 
+.status-gps {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    text-align: center;
+    transition: 0.5s;
+}
+/* Esto quando o GPS está possivelmente ligado */
+.gps-alerta {
+    background: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+}
+/* Estilo quando o GPS foi bloqueado/desligado */
+.gps-seguro {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+
 @media (min-width: 768px) {
     .container { max-width: 600px; border-radius: 12px; margin-top: 30px; }
     .botoes-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
@@ -462,7 +485,7 @@
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
         <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🏛️ Varas de Violência (TJPE)</strong>
-        <p style=display: block; margin-bottom: 10px;">Unidades da Justiça que decidem sobre Medidas Protetivas e processos criminais. Se precisar de informações sobre seu processo, consulte os contatos oficiais.</p>
+        <p style="display: block; margin-bottom: 10px;">Unidades da Justiça que decidem sobre Medidas Protetivas e processos criminais. Se precisar de informações sobre seu processo, consulte os contatos oficiais.</p>
         <a href="https://portal.tjpe.jus.br/web/coordenadoria-da-mulher/varas" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: none; border: 1.5px solid var(--color-primary); padding: 12px; border-radius: 8px; display: block; text-align: center;">🔗 Ver telefones e endereços das Varas</a>
     </div>
 
@@ -472,7 +495,7 @@
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
         <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🤝 Rede de Apoio</strong>
-        <p style=display: block; margin-bottom: 10px;">Apoio jurídico, social e segurança em um só lugar. </p>  
+        <p style="display: block; margin-bottom: 10px;">Apoio jurídico, social e segurança em um só lugar. </p>  
     <details>
         <summary>📞 Ouvidorias e Denúncias</summary>
         <p style= "margin-top: 10px; line-height: 1.6;">
@@ -507,7 +530,7 @@
             Tente contato com o número <b>0800 081 0129 ou com o WhatsApp</b>. Tente ligar se precisar de orientação jurídica urgente.
 </div>
         <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🛡️ Defensoria Pública (PE)</strong>
-        <p style=display: block; margin-bottom: 10px;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia. Você não precisa de provas, na medida protetiva a palavra da mulher é suficiente!<br><br>
+        <p style="display: block; margin-bottom: 10px;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia. Você não precisa de provas, na medida protetiva a palavra da mulher é suficiente!<br><br>
     ℹ️ <strong>Você sabia?</strong> O pedido de Medida Protetiva pode ser feito <strong>diretamente</strong> na Defensoria ou no Fórum, mesmo que você ainda não tenha ido à Polícia.</p>
 
     <p style="line-height: 1.6;">
@@ -576,10 +599,10 @@ function iniciarFuga() {
     box.innerHTML = `
         <strong style="color: #d9534f; font-size: 1.25em; display: block; text-align: center; margin-bottom: 15px;">🆘️ GUIA DE SAÍDA SEGURA</strong>
 
-        <div style="background: #fff3cd; padding: 12px; border-radius: 8px; border: 1px solid #ffeeba; margin-bottom: 15px; color: #856404; font-size: 0.95em; line-height: 1.4; text-align: center;">
-            📵 <b>Atenção:</b> Desligue a "Localização/GPS" do telemóvel agora para o agressor não a conseguir rastrear!
+      <div id="bannerGPS" class="status-gps gps-alerta">
+            ⌛ Verificando segurança da localização...
         </div>
-        
+  
         <div style="background: #fff; padding: 15px; border-radius: 8px; border: 2px solid #d9534f; font-size: 1.1em;">
             ${listaDireta}
         </div>
@@ -592,7 +615,32 @@ function iniciarFuga() {
             ⬅️ Voltar para o Menu Principal
         </button>
     `;
+    verificarEstadoGPS();
     window.scrollTo(0,0);
+}
+
+function verificarEstadoGPS() {
+    const banner = document.getElementById('bannerGPS');
+    
+    if (!navigator.geolocation) {
+        banner.innerHTML = "⚠️ Seu navegador não suporta geolocalização. Desative o GPS manualmente.";
+        return;
+    }
+
+    // Tenta obter a posição atual
+    navigator.geolocation.getCurrentPosition(
+        function(position) {
+            // Se cair aqui, o GPS ESTÁ LIGADO e acessível
+            banner.className = "status-gps gps-alerta";
+            banner.innerHTML = "📵 <b>Atenção:</b> Sua localização está ATIVA. Desligue o GPS agora para não ser rastreada!";
+        },
+        function(error) {
+            // Se cair aqui, o usuário negou ou o GPS está desligado (MAIS SEGURO)
+            banner.className = "status-gps gps-seguro";
+            banner.innerHTML = "✅ <b>Localização Protegida:</b> O acesso ao seu GPS foi bloqueado ou está desligado.";
+        },
+        { timeout: 5000 }
+    );
 }
 
 

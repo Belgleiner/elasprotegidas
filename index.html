@@ -61,7 +61,13 @@
     height: auto;
 } 
 
-   .btn { padding: 14px 8px; border: none; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: 0.3s; font-size: 0.95em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+   .btn { padding: 14px 8px; border: none; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: 0.3s; font-size: 0.95em; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /* ... seus outros estilos já existentes ... */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE/Edge */
+    user-select: none; /* Padrão */
+}
+
     
     .normal { background: var(--color-secondary); }
  /* ESTILO DO BOTÃO 190 - VERMELHO VIVO */
@@ -720,13 +726,20 @@ window.onload = carregarContatos;
 
 // Substitua a função de sair para ser mais discreta
            
-       function sairRapido() {
-    // replace() impede que o usuário volte para a página anterior usando o botão "voltar"
+       // Função de sair discreta e à prova de falta de internet
+function sairRapido() {
+    // 1. Esconde o aplicativo instantaneamente (útil se a internet estiver lenta ou desligada)
+    document.body.innerHTML = '<div style="padding: 20px; font-family: sans-serif; color: #333; text-align: left;"><h2>Notas</h2><hr><p>Lista de compras:<br><br>☐ Leite<br>☐ Pão<br>☐ Ovos<br>☐ Café</p></div>';
+    document.body.style.background = 'white';
+    
+    // 2. O replace() impede que o usuário volte para o app usando o botão "voltar" do celular
     window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
 }
-// Se ela sair da aba do app, o nome muda para disfarçar
+
+// Se ela apenas sair da aba do app ou minimizar, o nome muda para disfarçar
 window.onblur = function () { document.title = "Receita de Bolo Simples"; }
 window.onfocus = function () { document.title = "Bloco de Notas"; }
+
 
 
 if ('serviceWorker' in navigator) {

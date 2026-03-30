@@ -590,18 +590,18 @@ function iniciarFuga() {
     const dados = JSON.parse(localStorage.getItem('contato_emergencia'));
     let botaoWhatsApp = ''; 
     
-    if (dados && dados.tel) {
+        if (dados && dados.tel) {
         const numeroZap = dados.tel.startsWith('55') ? dados.tel : '55' + dados.tel;
-        const msg = encodeURIComponent('ESTOU EM PERIGO. Preciso de ajuda agora! Ligue para 190!');
+        // MENSAGEM DE FUGA (SAÍDA DE EMERGÊNCIA)
+        const msg = encodeURIComponent(`🚨 EMERGÊNCIA! ESTOU SAINDO DE CASA EM FUGA. Por favor, ligue para o 190 e peça ajuda urgente para mim. Não responda esta mensagem agora!`);
         const linkZap = `https://api.whatsapp.com/send?phone=${numeroZap}&text=${msg}`;
         
         botaoWhatsApp = `
         <button onclick="window.open('${linkZap}', '_blank')" style="width:100%; padding:18px; border-radius:12px; border:none; background: var(--color-secondary); color:white; font-weight:bold; font-size:1.1em; cursor:pointer; margin-bottom:10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            💬 AVISAR ${dados.nome.toUpperCase()}
-    
+            💬 AVISAR ${dados.nome.toUpperCase()} (ESTOU EM FUGA)
         </button>`;
-     
     }
+
     box.innerHTML = `
         <strong style="color: #d9534f; font-size: 1.25em; display: block; text-align: center; margin-bottom: 15px;">🆘️ GUIA DE SAÍDA SEGURA</strong>
 
@@ -675,14 +675,13 @@ function carregarContatos() {
     const dados = JSON.parse(localStorage.getItem('contato_emergencia'));
     const lista = document.getElementById('listaContatos');
     const form = document.getElementById('formContato');
-    
-    if(dados) {
+                
+     if(dados) {
         form.style.display = 'none';
         
-        // Se o número já tiver o 55 no início, não mexe. 
-        // Se não tiver, a gente adiciona o código do Brasil (55) na frente.
         const numeroZap = dados.tel.startsWith('55') ? dados.tel : '55' + dados.tel;
-        const mensagemPredefinida = encodeURIComponent(`ESTOU EM PERIGO. Preciso de ajuda agora! Ligue para 190!`);
+        // MENSAGEM DE SOCORRO GERAL (DENTRO DE MEUS CONTATOS)
+        const mensagemPredefinida = encodeURIComponent(`🚨 SOCORRO! ESTOU EM PERIGO. Por favor, chame a polícia (190) agora e informe que preciso de ajuda urgente. Não responda esta mensagem!`);
         const linkZap = `https://api.whatsapp.com/send?phone=${numeroZap}&text=${mensagemPredefinida}`;
 
         lista.innerHTML = `
@@ -692,7 +691,7 @@ function carregarContatos() {
                 <a href="tel:${dados.tel}" class="link-ligar">📞 LIGAR AGORA</a>
                 
                 <a href="${linkZap}" target="_blank" class="btn-whatsapp-discreto">
-                    💬 Enviar Mensagem de Socorro
+                    💬 Enviar Alerta de Socorro
                 </a>
                 
                 <br>
@@ -700,7 +699,7 @@ function carregarContatos() {
                     🗑️ Apagar contato
                 </button>
             </div>`;
-    } else { 
+    }else { 
         form.style.display = 'block'; 
         lista.innerHTML = ""; 
     }

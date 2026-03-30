@@ -640,11 +640,16 @@ function toggle(id){
     secoes.forEach(s => {
         const el = document.getElementById(s);
         if (el) {
-            // Se for a seção clicada e ela estiver fechada, abre. 
-            // Se já estiver aberta, fecha. 
-            // Todas as outras (diferentes da clicada) são fechadas (none).
             if (s === id) {
-                el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+                const estaFechado = (el.style.display === 'none' || el.style.display === '');
+                el.style.display = estaFechado ? 'block' : 'none';
+                
+                // Se acabou de abrir, rola a tela até o início da resposta
+                if (estaFechado) {
+                    setTimeout(() => {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100); // Pequeno atraso para o navegador processar a exibição
+                }
             } else {
                 el.style.display = 'none';
             }
@@ -653,6 +658,7 @@ function toggle(id){
     
     if(id === 'emergencia') carregarContatos();
 }
+
 function salvarContato() {
     const nome = document.getElementById('nomeContato').value;
     // Pega o que foi digitado e remove parênteses, espaços e traços
@@ -703,64 +709,53 @@ function carregarContatos() {
 function apagarContato() { if(confirm('Apagar contato?')) { localStorage.removeItem('contato_emergencia'); carregarContatos(); } }
 window.onload = carregarContatos;
 
-// Substitua a função de sair para ser mais discreta
-      // Função de sair com "Disfarce de Bloco de Notas Real"
+
+// Função de sair com "Disfarce de Bloco de Notas Real"
 function sairRapido() {
-    // 1. CALCULA A DATA DE HOJE AUTOMATICAMENTE (Essencial para não dar erro)
     const hoje = new Date();
     const dataFormatada = hoje.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
-    // 1. Camuflagem imediata: Desenha uma interface de App de Notas Profissional
+
+    // 1. Aplica o disfarce visual (Lista de Compras)
     document.body.innerHTML = `
-        <div style="background:#ffffff; min-height:100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#333; padding:0; margin:0; text-align:left;">
+        <div style="background:#ffffff; min-height:100vh; font-family: sans-serif; color:#333; padding:0; margin:0; text-align:left;">
             <div style="background:#f8f9fa; padding:15px; border-bottom:1px solid #e0e0e0; display:flex; justify-content:space-between; align-items:center;">
                 <span style="font-weight:bold; color:#777; font-size:0.9em;">📝 Notas Recentes</span>
                 <span style="color:#b76e79; font-size:1.5em; font-weight:lighter;">＋</span>
             </div>
-            
-           
-                 <div style="padding:25px;">
+            <div style="padding:25px;">
                 <h2 style="font-size:1.4em; margin-bottom:5px; color:#222;">Lista de Supermercado</h2>
                 <p style="color:#999; font-size:0.8em; margin-bottom:25px;">Editado em: ${dataFormatada}</p>
-                
                 <div style="line-height:2.8; font-size:1.1em; color:#444;">
                     <div style="border-bottom:1px solid #f0f0f0;">☐ Leite desnatado (2 un)</div>
                     <div style="border-bottom:1px solid #f0f0f0;">☐ Pão integral de forma</div>
                     <div style="border-bottom:1px solid #f0f0f0;">☐ Ovos brancos (30 un)</div>
                     <div style="border-bottom:1px solid #f0f0f0;">☐ Café em pó (500g)</div>
                     <div style="border-bottom:1px solid #f0f0f0;">☐ Detergente neutro</div>
-                    <div style="border-bottom:1px solid #f0f0f0;">☐ Papel toalha (pacote leve 3)</div>
                     <div style="border-bottom:1px solid #f0f0f0;">☐ Sabonete (4 un)</div>
                 </div>
             </div>
-
             <div style="position:fixed; bottom:0; width:100%; background:#f8f9fa; padding:12px; border-top:1px solid #e0e0e0; text-align:center; color:#aaa; font-size:0.75em;">
                 Sincronizado com a nuvem • 4 notas salvas
             </div>
         </div>
     `;
     
-    // Garante que o fundo da página fique branco para o disfarce
     document.body.style.background = 'white';
-    
-    // Muda o título da aba do navegador para o disfarce final
     document.title = "Minhas Notas - Bloco";
 
-    // 2. O Redirecionamento (O "Salto" para o Google)
-    // Usamos um tempo mínimo (150ms) para o navegador renderizar a lista acima
-    // Se tiver internet, o Google carrega por cima. Se não tiver, a lista protege ela.
-    setTimeout(function() {
-        window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
-    }, 150); 
+    // 2. Só tenta sair para o Google se houver internet
+    if (navigator.onLine) {
+        setTimeout(function() {
+            window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
+        }, 300); 
+    }
 }
-     
-   
 
-// Se ela apenas sair da aba do app ou minimizar, o nome muda para disfarçar
+// Camuflagem da aba do navegador quando a usuária troca de janela
 window.onblur = function () { document.title = "Receita de Bolo Simples"; }
 window.onfocus = function () { document.title = "Bloco de Notas"; }
 
-
-
+// Registro do Service Worker para funcionar Offline
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }

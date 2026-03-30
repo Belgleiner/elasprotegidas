@@ -598,7 +598,7 @@ function iniciarFuga() {
 
           <div class="alerta-gps">
             <strong style="display:block; text-align:center; margin-bottom:8px;">📵 DESLIGUE O SEU GPS AGORA</strong>
-            <b>No Android:</b> Deslize a tela de cima para baixo e desligue o ícone 📍 "Localização".<br>
+            <b>No Android:</b> Deslize a tela de cima para baixo e desligue o ícone "Localização".<br>
             <b>No iPhone:</b> Ajustes > Privacidade > Serviços de Localização > Desativar.<br>
             <small><i>Isso impede que o agressor rastreie seus passos por outros aplicativos.</i></small>
         </div>
@@ -695,16 +695,56 @@ function apagarContato() { if(confirm('Apagar contato?')) { localStorage.removeI
 window.onload = carregarContatos;
 
 // Substitua a função de sair para ser mais discreta
-           
-       // Função de sair discreta e à prova de falta de internet
+      // Função de sair com "Disfarce de Bloco de Notas Real"
 function sairRapido() {
-    // 1. Esconde o aplicativo instantaneamente (útil se a internet estiver lenta ou desligada)
-    document.body.innerHTML = '<div style="padding: 20px; font-family: sans-serif; color: #333; text-align: left;"><h2>Notas</h2><hr><p>Lista de compras:<br><br>☐ Leite<br>☐ Pão<br>☐ Ovos<br>☐ Café</p></div>';
+    // 1. CALCULA A DATA DE HOJE AUTOMATICAMENTE (Essencial para não dar erro)
+    const hoje = new Date();
+    const dataFormatada = hoje.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
+    // 1. Camuflagem imediata: Desenha uma interface de App de Notas Profissional
+    document.body.innerHTML = `
+        <div style="background:#ffffff; min-height:100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#333; padding:0; margin:0; text-align:left;">
+            <div style="background:#f8f9fa; padding:15px; border-bottom:1px solid #e0e0e0; display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-weight:bold; color:#777; font-size:0.9em;">📝 Notas Recentes</span>
+                <span style="color:#b76e79; font-size:1.5em; font-weight:lighter;">＋</span>
+            </div>
+            
+           
+                 <div style="padding:25px;">
+                <h2 style="font-size:1.4em; margin-bottom:5px; color:#222;">Lista de Supermercado</h2>
+                <p style="color:#999; font-size:0.8em; margin-bottom:25px;">Editado em: ${dataFormatada}</p>
+                
+                <div style="line-height:2.8; font-size:1.1em; color:#444;">
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Leite desnatado (2 un)</div>
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Pão integral de forma</div>
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Ovos brancos (30 un)</div>
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Café em pó (500g)</div>
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Detergente neutro</div>
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Papel toalha (pacote leve 3)</div>
+                    <div style="border-bottom:1px solid #f0f0f0;">☐ Sabonete (4 un)</div>
+                </div>
+            </div>
+
+            <div style="position:fixed; bottom:0; width:100%; background:#f8f9fa; padding:12px; border-top:1px solid #e0e0e0; text-align:center; color:#aaa; font-size:0.75em;">
+                Sincronizado com a nuvem • 4 notas salvas
+            </div>
+        </div>
+    `;
+    
+    // Garante que o fundo da página fique branco para o disfarce
     document.body.style.background = 'white';
     
-    // 2. O replace() impede que o usuário volte para o app usando o botão "voltar" do celular
-    window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
+    // Muda o título da aba do navegador para o disfarce final
+    document.title = "Minhas Notas - Bloco";
+
+    // 2. O Redirecionamento (O "Salto" para o Google)
+    // Usamos um tempo mínimo (150ms) para o navegador renderizar a lista acima
+    // Se tiver internet, o Google carrega por cima. Se não tiver, a lista protege ela.
+    setTimeout(function() {
+        window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
+    }, 150); 
 }
+     
+   
 
 // Se ela apenas sair da aba do app ou minimizar, o nome muda para disfarçar
 window.onblur = function () { document.title = "Receita de Bolo Simples"; }

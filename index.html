@@ -6,6 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bloco de Notas</title>
 
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="apple-mobile-web-app-title" content="Notas">
+
+<link rel="apple-touch-icon" href="icone.png">
+
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
     
@@ -30,7 +39,27 @@
     
     .botoes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
     
-    .btn { padding: 14px 8px; border: none; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: 0.3s; font-size: 0.95em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+/* Padronização das legendas dentro dos botões */
+.btn-legenda {
+    font-size: 0.72em !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: 90%;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Ajuste base para botões com duas linhas */
+.btn.full-width {
+    flex-direction: column;
+    padding: 15px 8px !important;
+    height: auto;
+} 
+
+   .btn { padding: 14px 8px; border: none; border-radius: 12px; text-decoration: none; color: white; font-weight: bold; display: flex; align-items: center; justify-content: center; text-align: center; cursor: pointer; transition: 0.3s; font-size: 0.95em; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
     
     .normal { background: var(--color-secondary); }
  /* ESTILO DO BOTÃO 190 - VERMELHO VIVO */
@@ -167,16 +196,17 @@
     <h1>🌸 Central Mulher Protegida</h1>
     <div class="subtitulo">Rede de apoio à mulher pernambucana em situação de violência doméstica.</div>
 
-    <div class="botoes-grid">
-       <button class="btn sos full-width" onclick="acionarEmergencia()">
-    🚨 POLÍCIA (190)
+    <button class="btn sos full-width" onclick="acionarEmergencia()" style="flex-direction: column; padding: 15px !important; gap: 5px;">
+    <span style="font-size: 1.2em; font-weight: bold;">🚨 POLÍCIA (190)</span>
+    <span class="btn-legenda">
+        O 190 não atende em Libras. Use <b>"Meus Contatos"</b> para socorro!
+    </span>
 </button>
-
         <button class="btn normal full-width" onclick="iniciarFuga()">🆘️ Preciso sair agora</button>
 
       <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank" style="flex-direction: column; padding: 12px !important; gap: 6px;">
     <span style="font-size: 1.05em;">⚖️ Pedir Medida Protetiva</span>
-    <span style="font-size: 0.75em; background: rgba(255, 255, 255, 0.25); padding: 4px 10px; border-radius: 6px; font-weight: 600; line-height: 1.2; text-align: center;">
+    <span class="btn-legenda">
         ⚠️ NÃO precisa de B.O. nem de provas!
     </span>
 </a>
@@ -184,7 +214,10 @@
  <button class="btn normal" onclick="toggle('saude')">🏥 Sofreu violência sexual?</button>
         
         <a href="tel:180" class="btn normal">📞 Central 180</a>
-        <a href="https://api.whatsapp.com/send?phone=556196100180&text=Preciso%20de%20ajuda" class="btn whats" target="_blank">💬 WhatsApp 180</a>
+   <a href="https://api.whatsapp.com/send?phone=556196100180&text=Oi" class="btn whats" target="_blank" style="flex-direction: column; gap: 2px; padding: 10px !important;">
+    <span>💬 WhatsApp 180</span>
+   <span class="btn-legenda">(Também em Libras 🤟)</span>
+</a>
 
         <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos</button>
         <button class="btn normal" onclick="toggle('fuga')">🧳 Plano de Emergência</button>
@@ -277,8 +310,19 @@
 
     <div id="emergencia" class="resultado">
     <strong style="color: var(--color-primary);">👥 Contatos de Confiança</strong>
+
+
+    <div style="background: #fff5f5; padding: 12px; border-radius: 10px; border: 1.5px solid #d9534f; margin-top: 10px; margin-bottom: 15px;">
+        <p style="margin: 0; font-size: 0.85em; color: #d9534f; line-height: 1.4; text-align: left;">
+            🤟 <b>Importante (mulher surda):</b><br>
+            Como o 190 em PE não tem WhatsApp, a pessoa que você cadastrar abaixo será quem <b>ligará para a polícia por você</b> quando receber seu pedido de socorro. Escolha alguém que possa atender rápido!
+        </p>
+    </div>
     <div id="formContato">
-        <p style="display: block; margin-bottom: 10px;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. <b>Lembre de colocar o DDD.</b></p>
+        <p style="display: block; margin-bottom: 10px;">Adicione alguém que pode te ajudar e receber uma mensagem de urgência. <b>Lembre de colocar o DDD.</b>
+
+      🤟 <b>PARA MULHERES SURDAS:</b> Como o 190 em PE não tem WhatsApp, a pessoa cadastrada abaixo será quem <b>ligará para a polícia por você</b> ao receber o seu pedido de socorro. Escolha alguém de confiança!
+        </p>
         <input type="text" id="nomeContato" class="input-contato" placeholder="Nome da pessoa">
         <input type="tel" id="telContato" class="input-contato" placeholder="Telefone com DDD">
         <button class="btn-salvar" onclick="salvarContato()">Salvar Contato</button>
@@ -419,7 +463,7 @@
     
 <div id="varas" class="resultado">
         <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
-            ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
+            ⚠️ <b>Se você estiver sem internet:</b><br>
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
         <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🏛️ Varas de Violência (TJPE)</strong>
@@ -429,7 +473,7 @@
 
      <div id="rede" class="resultado">
         <div style="background: #fff5f5; padding: 15px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 18px; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
-            ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
+            ⚠️ <b>Se você estiver sem internet:</b><br>
             Procure o <b>Fórum</b> mais próximo ou uma <b>Delegacia</b>.
         </div>
         <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🤝 Rede de Apoio</strong>
@@ -464,11 +508,11 @@
    </div>
         <div id="defensoria" class="resultado">
         <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border: 1px solid #ffcccc; margin-bottom: 15px; font-size: 0.9em; color: #d9534f; line-height: 1.4;">
-            ⚠️ <b>SE VOCÊ ESTIVER SEM INTERNET:</b><br>
+            ⚠️ <b>Se você estiver sem internet:</b><br>
             Tente contato com o número <b>0800 081 0129 ou com o WhatsApp</b>. Tente ligar se precisar de orientação jurídica urgente.
 </div>
         <strong style="color: var(--color-primary);display: block; margin-bottom: 15px;">🛡️ Defensoria Pública (PE)</strong>
-        <p style=display: block; margin-bottom: 10px;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia. Você não precisa de provas, na medida protetiva a palavra da mulher é suficiente!<br>
+        <p style=display: block; margin-bottom: 10px;">Assistência jurídica gratuita para pedidos de medida protetiva, divórcio, guarda e pensão. Um direito seu para garantir sua autonomia. Você não precisa de provas, na medida protetiva a palavra da mulher é suficiente!<br><br>
     ℹ️ <strong>Você sabia?</strong> O pedido de Medida Protetiva pode ser feito <strong>diretamente</strong> na Defensoria ou no Fórum, mesmo que você ainda não tenha ido à Polícia.</p>
 
     <p style="line-height: 1.6;">
@@ -637,13 +681,14 @@ window.onload = carregarContatos;
     // replace() impede que o usuário volte para a página anterior usando o botão "voltar"
     window.location.replace("https://www.google.com.br/search?q=receitas+de+bolo+simples");
 }
-
-       
-
 // Se ela sair da aba do app, o nome muda para disfarçar
 window.onblur = function () { document.title = "Receita de Bolo Simples"; }
 window.onfocus = function () { document.title = "Bloco de Notas"; }
 
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
 </script>
 </body>
     </html>

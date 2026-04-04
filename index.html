@@ -219,17 +219,17 @@
     <button class="btn sos full-width" onclick="acionarEmergencia()" style="flex-direction: column; padding: 15px !important; gap: 5px;">
     <span style="font-size: 1.2em; font-weight: bold;">🚨 POLÍCIA (190)</span>
     <span class="btn-legenda">
-        O 190 não atende em Libras. Use <b>"Meus Contatos"</b> para socorro!
+        O 190 não atende em Libras. Use <b>"Meus contatos de emergência"</b> para socorro!
     </span>
 </button>
-        <button class="btn normal full-width" onclick="iniciarFuga()">🆘️ Preciso sair agora!
+        <button class="btn normal full-width" onclick="iniciarFuga()">🆘️ Preciso sair agora
 <span class="btn-legenda">
         Guia de saída rápida.
     </span>
 </button>
 
       <a href="https://medidaprotetiva.svc.tjpe.jus.br/" class="btn normal full-width" target="_blank" style="flex-direction: column; padding: 12px !important; gap: 6px;">
-    <span style="font-size: 1.05em;">⚖️ Pedir Medida Protetiva</span>
+    <span style="font-size: 1.05em;">⚖️ Pedir medida protetiva</span>
     <span class="btn-legenda">
         ⚠️ NÃO precisa de B.O. nem de provas!
     </span>
@@ -246,23 +246,27 @@
         <span class="btn-legenda">Outros registros</span>
     </a>
     
- <button class="btn normal" onclick="toggle('saude')">🏥 Sofreu violência sexual? <span class="btn-legenda">
-        Urgência médica
-    </span></button>
+ <button class="btn normal" onclick="toggle('saude')" style="flex-direction: column; gap: 2px; padding: 10px !important;">
+    <span>🏥 Sofreu violência sexual?</span>
+    <span class="btn-legenda">Urgência médica</span>
+</button>
         
-        <a href="tel:180" class="btn normal">📞 Central 180    <span class="btn-legenda">Informações</span></a>
+      <a href="tel:180" class="btn normal" style="flex-direction: column; gap: 2px; padding: 10px !important;">
+    <span>📞 Central 180</span>
+    <span class="btn-legenda">Informações</span>
+</a>
      
    <a href="https://api.whatsapp.com/send?phone=556196100180&text=Oi" class="btn whats" target="_blank" style="flex-direction: column; gap: 2px; padding: 10px !important;">
     <span>💬 WhatsApp 180</span>
    <span class="btn-legenda">Também em Libras 🤟</span>
 </a>
 
-        <button class="btn normal" onclick="toggle('emergencia')">👥 Meus Contatos de Emergência</button>
-        <button class="btn normal" onclick="toggle('fuga')">🧳 Plano de Emergência</button>
+        <button class="btn normal" onclick="toggle('emergencia')">👥 Meus contatos de emergência</button>
+        <button class="btn normal" onclick="toggle('fuga')">🧳 Plano de emergência</button>
 
        
         
-        <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a Violência</button>
+        <button class="btn normal" onclick="toggle('violencia')">🛑 Entenda a violência</button>
         <button class="btn normal" onclick="toggle('defensoria')">🛡️ Defensoria Pública</button>
         <button class="btn normal" onclick="toggle('rede')">🤝 Rede de Apoio </button>
         <button class="btn normal" onclick="toggle('varas')">🏛️ Varas de Violência (TJPE)</button>

@@ -742,7 +742,16 @@ function iniciarFuga() {
 function acionarEmergencia() {
     window.location.href = "tel:190";
     }
-
+function cancelarFuga() {
+    // Esconde a tela do plano de fuga
+    document.getElementById('fluxoFuga').style.display = 'none';
+    
+    // Mostra o menu de botões principal novamente (ele usa display: grid no seu CSS)
+    document.querySelector('.botoes-grid').style.display = 'grid';
+    
+    // Sobe a tela suavemente para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 function toggle(id){
     const secoes = ['emergencia', 'violencia', 'fuga', 'varas', 'rede', 'defensoria', 'fluxoFuga', 'saude'];

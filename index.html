@@ -743,14 +743,19 @@ function acionarEmergencia() {
     window.location.href = "tel:190";
     }
 function cancelarFuga() {
-    // Esconde a tela do plano de fuga
-    document.getElementById('fluxoFuga').style.display = 'none';
+    // 1. Esconde a tela de fuga
+    const box = document.getElementById('fluxoFuga');
+    if (box) box.style.display = 'none';
     
-    // Mostra o menu de botões principal novamente (ele usa display: grid no seu CSS)
-    document.querySelector('.botoes-grid').style.display = 'grid';
+    // 2. Mostra o menu de volta (tem que ser 'grid' para não quebrar o visual)
+    const grid = document.querySelector('.botoes-grid');
+    if (grid) grid.style.display = 'grid';
     
-    // Sobe a tela suavemente para o topo
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 3. Força a tela a ir para o topo IMEDIATAMENTE e sem animação suave 
+    // (a animação suave às vezes falha quando o tamanho da página muda muito rápido)
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 50);
 }
 
 function toggle(id){
